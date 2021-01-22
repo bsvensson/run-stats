@@ -1,4 +1,7 @@
 backups/
 data/
+gpx/
 *.csv
 *.tmp
+*.txt
+.strava-session
