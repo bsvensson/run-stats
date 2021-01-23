@@ -1,0 +1,3 @@
+copy C:\Users\bjor3345\Documents\PYTHON\log-summarize-REST2020_ESSR_Redlands.txt REST2020.txt 
+#foo 
+Already up to date.
