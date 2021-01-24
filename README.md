@@ -1,3 +1,4 @@
 # run-stats
 
-Various runstats. Go to https://github.com/bsvensson/run-stats/ or https://github.com/bsvensson/run-stats/ESSR.html
+Various runstats. 
+See https://bsvensson.github.io/run-stats/REST2020.txt
