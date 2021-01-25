@@ -6,7 +6,9 @@ ECHO Next ... update the database from PYTHON folder on laptop
 if %computername%==BSVENSSON (
   echo laptop with ESSR2020...
   PUSHD C:\Users\bjor3345\Documents\python
+  python --version
   call runall.bat
+  python --version
   POPD
   call 4-UpdateResults.bat
 )

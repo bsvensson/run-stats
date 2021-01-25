@@ -6,18 +6,20 @@
   set BASH=bash.exe
   %BASH% --version >nul 2>nul
 
-  if %ERRORLEVEL%==0 (goto CONTINUE)
+  if %ERRORLEVEL%==0 (
+    echo Yes.
+    %BASH% --version | grep bash
+    goto CONTINUE
+  )
 
   echo Nope.  Let's look for it elsewhere...
 
   IF EXIST "%LOCALAPPDATA%\Programs\Git\bin\bash.exe" (
        echo Found it. Fixed.
        SET "PATH=%LOCALAPPDATA%\Programs\Git\bin\;%PATH%"
-       goto CONTINUE
   ) ELSE IF EXIST "%LOCALAPPDATA%\Atlassian\SourceTree\git_local\bin\bash.exe" (
        echo Found it. Fixed.
        SET "PATH=%LOCALAPPDATA%\Atlassian\SourceTree\git_local\bin;%PATH%"
-       goto CONTINUE
   ) ELSE (
       echo Sorry, can't find a bash...
       echo Try other places:
@@ -25,7 +27,8 @@
       where /R %LOCALAPPDATA% %BASH%
       exit 1
   )
-  goto CONTINUE
+  where bash
+  bash --version | head -1
 
 :PYTHON
 
@@ -45,8 +48,5 @@
   python --version
 
 :CONTINUE
-
-  where bash
-  bash --version | head -1
 
 @ECHO ON
