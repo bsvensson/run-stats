@@ -4,8 +4,8 @@
   git fetch
   git pull
 
-  xcopy /D /V /Y C:\Users\bjor3345\Documents\PYTHON\log-summarize-REST2020_ESSR_Redlands.txt docs\REST2020.txt 
-  @REM git status | findstr /c:"Already up-to-date"
+  xcopy /D /V /Y C:\Users\bjor3345\Documents\PYTHON\log-summarize-REST2020_ESSR_Redlands.txt docs\ESSR2020.txt 
+  xcopy /D /V /Y C:\Users\bjor3345\Documents\PYTHON\log-summarize-REST2020_REST_Redlands.txt docs\REST2020.txt 
   git status | findstr /c:"modified:   docs/REST2020.txt"
    
   IF %ERRORLEVEL%==0 GOTO UPDATEREPO
@@ -14,8 +14,9 @@
 
 :UPDATEREPO
   echo update repo...
+  git add docs/ESSR2020.txt
   git add docs/REST2020.txt
-  git commit -m "Update docs/REST2020.txt"
+  git commit -m "Update stats"
   git push
   goto END
 
