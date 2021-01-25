@@ -10,5 +10,5 @@ if %computername%==BSVENSSON (
   call runall.bat
   python --version
   POPD
-  call 4-UpdateResults.bat
+  REM -- started from runall -- call 4-UpdateResults.bat
 )
