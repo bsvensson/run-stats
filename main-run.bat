@@ -1,3 +1,4 @@
+@ECHO OFF
 ECHO Get the latest strava activities for ech person and save it to single line file like data\current-month-Bjorn.txt
 call 1-setup.bat
 bash 2-StravaActivitiesByMonth.sh
@@ -12,3 +13,4 @@ if %computername%==BSVENSSON (
   POPD
   REM -- started from runall -- call 4-UpdateResults.bat
 )
+ECHO ON

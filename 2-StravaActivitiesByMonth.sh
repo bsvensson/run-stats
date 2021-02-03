@@ -25,8 +25,8 @@ _strava4_session=$(cat "$SESSIONFILE")
 
 gograb() {
   NAME=$1
-  YEAR=${2:-2021}
-  MONTH=${3:-01}
+  YEAR=${2:-$(date '+%Y')}
+  MONTH=${3:-$(date '+%m')}
   # uppercase first letter in name
   NAME="$(tr '[:lower:]' '[:upper:]' <<< ${NAME:0:1})${NAME:1}"
 
@@ -60,11 +60,16 @@ if test "$#" -eq 0; then
   done
 elif test "$#" -eq 1; then
   gograb $1
+elif test "$#" -eq 2; then
+  for n in ${ALLNAMES[@]}; do
+    gograb $n
+  done
 elif test "$#" -eq 3; then
   gograb $1 $2 $3
 else
-  echo This script require 0, 1, or 3 parameters: NAME YEAR MONTH.
+  echo This script require 0, 1, 2, or 3 parameters: NAME YEAR MONTH.
   echo "NAME YEAR MONTH -- runs a specific month for a specific person"
+  echo "YEAR MONTH      -- runs a specific month for everyone (in our group)"
   echo "NAME            -- runs \"current\" month for a specific person"
   echo "                -- runs \"current\" month for everyone (in our group)"
   exit 1
