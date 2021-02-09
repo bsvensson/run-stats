@@ -14,6 +14,34 @@
 <tr><td>Chris</td><td> 62.7%</td><td>  31.3 mi</td><td>  103</td><td>   90</td></tr>
 <tbody></table>
 <div>Total: 50.0 miles / 80.4 km</div>
-<div><small>Last updated Mon Feb  8 09:17:31 2021
+<div><small>Last updated Mon Feb  8 22:13:20 2021
 </small></div><script src='https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js'></script>
+<hr><div id='lastEditDate'></div><script>
+  const featurelayer = 'https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/REST2020_REST_Hulda/FeatureServer/1';
+  const mapdata = '<a href="' + featurelayer + '">Map data</a>'
+  getSomething('lastEditDate', featurelayer + '?f=json'); 
+  function getSomething(specificDiv, URL) {
+      fetch(URL, {method: 'GET'})
+        .then(function(response) {
+          let theDiv = document.getElementById(specificDiv);
+          theDiv.innerHTML += mapdata;
+          if (!response.ok) {
+            theDiv.innerHTML += 'PROBLEM! - response not ok --- ' + response.status + ' -- ' + link + '<br>';
+            return;
+          }
+          return response.json();
+       }).then(function(json) {
+          let theDiv = document.getElementById(specificDiv);
+          var propertyNames = Object.keys(json);
+          if (propertyNames.length < 1) {
+            theDiv.innerHTML += 'PROBLEM! - json should not be empty --- ' + link + '<br>';
+            return;
+          }
+          const date1 = new Date(json.editingInfo.lastEditDate);
+          theDiv.innerHTML += ' last updated at ' + date1 + '.';
+        }).catch(error => {
+          console.error('My error 101:', error);
+        });
+    }
+</script>
 </body></html>
