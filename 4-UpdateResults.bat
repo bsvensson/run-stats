@@ -1,6 +1,9 @@
 @ECHO OFF
 @echo ---- This scripts copies the log from last summarize script, 
 @echo ---- and if different, updates github repo
+@REM
+@REM     Only commit if there's changes (ignoring "Last updated" lines)
+@REM
 
   git fetch
   git pull | grep -v "Already up to date"
@@ -12,7 +15,7 @@
   set COMMIT=0
 
   SET FILE=ESSR2020.html
-  git status | find "%FILE%"
+  git diff --ignore-matching-lines="Last updated" docs\%FILE% | find "%FILE%" 
   IF %ERRORLEVEL%==0 (
     echo updating docs/%FILE%
     git add docs/%FILE%
@@ -20,7 +23,7 @@
   )
 
   SET FILE=REST2020.html
-  git status | find "%FILE%"
+  git diff --ignore-matching-lines="Last updated" docs\%FILE% | find "%FILE%" 
   IF %ERRORLEVEL%==0 (
     echo updating docs/%FILE%
     git add docs/%FILE%
@@ -28,7 +31,7 @@
   )
 
   SET FILE=REST2020-Hulda.html
-  git status | find "%FILE%"
+  git diff --ignore-matching-lines="Last updated" docs\%FILE% | find "%FILE%" 
   IF %ERRORLEVEL%==0 (
     echo updating docs/%FILE%
     git add docs/%FILE%
