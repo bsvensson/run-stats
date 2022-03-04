@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"><!-- for emoji happiness-->
+    <link rel='stylesheet'
+        href='https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css'>
+
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.0.0-beta.76/calcite.esm.js"></script>
+    <script nomodule="" src="https://js.arcgis.com/calcite-components/1.0.0-beta.76/calcite.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.0-beta.76/calcite.css" />
+
+    <link href="https://unpkg.com/tabulator-tables@5.1/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.1/dist/js/tabulator.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        body {
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hulda Trivia</h1>
+
+    <p id="description"> </p>
+
+    <p>
+        <calcite-button appearance="solid" icon-end="forward" id="button1">Give me more Hulda Trivia!
+        </calcite-button>
+    </p>
+
+    <ul id="trivialist">
+    </ul>
+
+    <p id="intro"></p>
+
+    <script>
+        (async () => {
+
+            // START TRIVIA
+            const descriptionDiv = document.getElementById('description');
+            const trivialistElement = document.getElementById('trivialist');
+            const areaname = "Hulda";
+
+            const baseURL = areaname.toLocaleLowerCase() + "-segments.json"
+            const maxcase = 13; // for +1 factTypes
+            let segments = [];
+            let names = [];
+            let attempts = [];
+            let peopleCounts = [];
+            let count_everyones = [];
+            let count_everyone_2022s = [];
+            let wordCounts = []
+            let segmentData = [];
+            let possibleFacts = [
+                'longDistance1',
+                'longDistance2',
+                'shortDistance1',
+                'shortDistance2',
+                '2022segmentcount',
+                'not2022segmentcount',
+                'averageDistance',
+                'longName1',
+                'longName2',
+                'shortName1',
+                'shortName2',
+                'commonWord1',
+                'commonWord2',
+                'moreThan1000Runners',
+                'moreThan500Runners',
+                'moreThan100Runners'
+            ]
+            const maxFacts = possibleFacts.length;
+            let factCount = 0;
+
+            console.log(`~~~~~~~~~~~~~~~~ get ready for ${maxFacts} facts about ${areaname}.`)
+
+            document.getElementById("button1").addEventListener("click", function () {
+                getRandomFact("button clicked");
+            });
+
+            // grab the available HTML file names
+            await axios.get(baseURL)
+                .then(function (response) {
+                    segmentData = response.data; // .body ; //JSON.parse(response.body);
+                    descriptionDiv.innerHTML += `Random stats about the ${segmentData.length} segments in ${areaname}.`;
+                    //response.forEach((stat, index) => {
+                    segmentData.forEach((element, index) => {
+                        if (element.name.match(/&#39;/)) {
+                            element.name = element.name.replace(/&#39;/gi, "'");
+                        }
+                        segments.push(element.segment);
+                        names.push(element.name);
+                        attempts.push(element.attempts);
+                        peopleCounts.push(element.peopleCount);
+                        count_everyones.push(element.count_everyone);
+                        if (element.count_everyone_2022 > 0) {
+                            count_everyone_2022s.push(element.count_everyone_2022);
+                        }
+                    });
+                    segments.sort(function (a, b) { return a - b }); // sort numbers in asc
+                    names.sort();
+                    attempts.sort(function (a, b) { return b - a });  // Sort numbers in descending order:
+                    peopleCounts.sort(function (a, b) { return b - a });
+                    count_everyones.sort(function (a, b) { return b - a });
+                    count_everyone_2022s.sort(function (a, b) { return b - a });
+
+                    // how common are different words in the segment names
+                    const namesCombo = names.join(' ').toLocaleLowerCase();
+                    const words = namesCombo.split(/\b/);
+                    for (var i = 0; i < words.length; i++) {
+                        if (words[i].match(/[A-z]/) && words[i].length > 0
+                            && !words[i].match(/^the$/)
+                            && !words[i].match(/^to$/)
+                            && !words[i].match(/^of$/)
+                            && !words[i].match(/^a$/)
+                            && !words[i].match(/^an$/)
+                            && !words[i].match(/^and$/)
+                        ) {
+
+                            const index = wordCounts.findIndex((obj => obj.word == words[i]));
+                            if (index == -1) { //create
+                                wordCounts.push({ 'word': words[i], 'count': 1 });
+                            } else {
+                                const temp = wordCounts[index].count
+                                wordCounts[index].count = temp + 1;
+                            }
+                        }
+                    }
+                    wordCounts.sort(function (a, b) { return b.count - a.count });  // Sort numbers in descending order:
+                    // number of different "words": wordCounts.length
+                    // climb, ridge, down, up, hulda,
+                    // console.log("word counts:", wordCounts.length, wordCounts.slice(0, 20))
+                })
+                .catch(function (error) {
+                    console.error("-------- error 101 ----------");
+                    console.error(error);
+                })
+                .then(function () {
+                    console.log(`~~~~~~~~~~~~~~~~ got data for ${segmentData.length} segments.`)
+                });
+
+
+            // end of axiom
+
+            function getRandomFact() {
+                let fact = "";
+                const lastFact = "<i>Enough trivia, why don't you go run instead?</i>";
+                if (factCount++ == maxFacts) {
+                    fact = lastFact;
+                } else if (factCount > maxFacts) {
+                    return;
+                }
+
+                if (possibleFacts.length > 0) {
+                    const randomIndex1 = Math.floor(Math.random() * possibleFacts.length);
+                    console.log("Now", possibleFacts[randomIndex1]);
+                    const thisPossibleFact = possibleFacts.splice(randomIndex1, 1)[0];
+
+                    switch (thisPossibleFact) {
+                        case "longDistance1":
+                            fact = getFactByField(1, "distance");
+                            break;
+                        case "longDistance2":
+                            fact = getFactByField(2, "distance");
+                            break;
+                        case "shortDistance1":
+                            fact = getFactByField(3, "distance");
+                            break;
+                        case "shortDistance2":
+                            fact = getFactByField(4, "distance");
+                            break;
+                        case "averageDistance":
+                            fact = `Average segment distance is ${findAverageDistance(segmentData)} miles`;
+                            break;
+                        case "2022segmentcount":
+                            // how many segments run in 2022
+                            fact = `${count_everyone_2022s.length} segments (${Math.round(100 * count_everyone_2022s.length / count_everyones.length)}%) have already been run by someone in 2022.`;
+                            break;
+                        case "not2022segmentcount":
+                            const num2 = count_everyones.length - count_everyone_2022s.length;
+                            fact = `${num2} segments (${Math.round(100 * num2 / count_everyones.length)}%) have not yet been run by anyone in 2022.`;
+                            break;
+                        case "longName1":
+                            fact = getFactByField(1, "name");
+                            break;
+                        case 'longName2':
+                            fact = getFactByField(2, "name");
+                            break;
+                        case "shortName1":
+                            fact = getFactByField(3, "name");
+                            break;
+                        case "shortName2":
+                            fact = getFactByField(4, "name");
+                            break;
+                        case "commonWord1":
+                            fact = `The most common word in segment names is <b>${wordCounts[0].word}</b>.`;
+                            break;
+                        case "commonWord2":
+                            fact = `The two most common words in segment names are <b>${wordCounts[0].word}</b> and <b>${wordCounts[1].word}</b>`;
+                            break;
+                        case 'moreThan1000Runners':
+                            pCount = 1000;
+                            fact = segmentData.filter(seg => seg.peopleCount > pCount).length + ` segments have been run by more than ${pCount} people`
+                            break;
+                        case 'moreThan500Runners':
+                            pCount = 500;
+                            fact = segmentData.filter(seg => seg.peopleCount > pCount).length + ` segments have been run by more than ${pCount} people`
+                            break;
+                        case 'moreThan100Runners':
+                            pCount = 100;
+                            fact = `More than ${pCount} people have run over ${segmentData.filter(seg => seg.peopleCount > pCount).length} segments in ${areaname}`
+                            break;
+                        default:
+                            // NEVER
+                            console.log("Oh oh 103 should not happen");
+                    }
+                    /* switch (factType) {
+                        case 11:  // runner with most segments
+                        case 12: // X runners have run more than Y segments (Y > 10)
+                            // 10 * (1 + Math.round(Math.random()); // 10,20,30
+                            const topnums = [10, 25, 50, 75, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 205];
+                            const randomIndex = Math.floor(Math.random() * topnums.length);
+                            // get random item
+                            const topnum = topnums[randomIndex];
+                            // segmentData.sort((a, b) => {
+                            //     return b.peopleCount - a.peopleCount;
+                            // });
+                            fact = `X runners have done more than ${topnum} segments --- `
+                    } */
+                }
+                const newDiv2 = document.createElement("li");
+                newDiv2.innerHTML = fact;
+                trivialistElement.prepend(newDiv2);
+                return;
+            } // end of getRandomFact
+
+            function getFactByField(casenum, factField) {
+                if (factField == "name") {
+                    segmentData.sort((a, b) => {
+                        return b[factField].length - a[factField].length;  // longest first
+                    });
+                } else if (factField == "distance") {
+                    segmentData.sort((a, b) => {
+                        return b[factField] - a[factField];  // longest first
+                    });
+                }
+                if (casenum == 1) { // longest
+                    const seg = segmentData[0];
+                    if (factField == "name") {
+                        if (segmentData[0][factField].length == segmentData[1][factField].length) { // multiple names with same length
+                            return `The longest segment names are ${segmentData[0][factField].length} characters long:  <a href="https://www.strava.com/segments/${segmentData[0].segment}">${segmentData[0].name}</a> and  <a href="https://www.strava.com/segments/${segmentData[1].segment}">${segmentData[1].name}</a>`;
+                        } else {
+                            return `The longest segment name is ${seg[factField].length} characters long: <a href="https://www.strava.com/segments/${seg.segment}">${seg.name}</a>`;
+                        }
+                    } else if (factField == "distance") {
+                        return `The very longest segment is ${seg[factField]} miles: <a href="https://www.strava.com/segments/${seg.segment}">${seg.name}</a>`;
+                    } else {
+                        console.log("OH OH")
+                    }
+                } else if (casenum == 2) { // 2nd longest
+                    const seg = segmentData[1];
+                    if (factField == "name") {
+                        if (segmentData[0].name.length != segmentData[1].name.length) {
+                            return `The second longest name is ${segmentData[1].name.length} characters long: <a href="https://www.strava.com/segments/${segmentData[1].segment}">${segmentData[1].name}</a>`;
+                        } else {
+                            const result = names.filter(name => name.match(/Hulda/));
+                            return result.length + " segment names contain the word Hulda!";
+                        }
+                    } else if (factField == "distance") {
+                        return `The second longest segment is ${seg[factField]} miles: <a href="https://www.strava.com/segments/${seg.segment}">${seg.name}</a>`;
+                    }
+                } else if (casenum == 3) { // shortest
+                    segmentData.reverse();
+                    const seg0 = segmentData[0];
+                    const seg1 = segmentData[1];
+                    if (factField == "name") {
+                        if (seg0.name.length == seg1.name.length) { // multiple names with same length
+                            return `The shortest segment names are only ${seg0.name.length} characters long:  <a href="https://www.strava.com/segments/${seg0.segment}">${seg0.name}</a> and <a href="https://www.strava.com/segments/${seg1.segment}">${seg1.name}</a>`;
+                        } else {
+                            return `The shortest segment name is only ${seg0.name.length} characters long: <a href="https://www.strava.com/segments/${seg0.segment}">${seg0.name}</a>`;
+                        }
+                    } else if (factField == "distance") {
+                        if (segmentData[0][factField] == segmentData[1][factField]) { // multiples with same
+                            return `The shortest segments are ${seg0[factField]} miles: <a href="https://www.strava.com/segments/${seg0.segment}">${seg0.name}</a> and <a href="https://www.strava.com/segments/${seg1.segment}">${seg1.name}</a>`;
+                        } else {
+                            return `The shortest segment is ${seg0[factField]} miles: <a href="https://www.strava.com/segments/${seg0.segment}">${seg0.name}</a>`;
+                        }
+                    }
+                } else if (casenum == 4) { // 2nd shortest
+                    segmentData.reverse();
+                    const seg = segmentData[1];
+                    if (factField == "name") {
+                        if (segmentData[0].name.length != segmentData[1].name.length) {
+                            return `The second shortest name is ${seg.name.length} characters long: <a href="https://www.strava.com/segments/${seg.segment}">${seg.name}</a>`;
+                        } else {
+                            const result = names.filter(name => name.match(/hulda/));
+                            return result.length + " segment names contain the word hulda!";
+                        }
+                    } else if (factField == "distance") {
+                        return `The second shortest segment is ${seg[factField]} miles: <a href="https://www.strava.com/segments/${seg.segment}">${seg.name}</a>`;
+                    }
+                } else {
+                    return "Hmm, maybe you should go run now?"
+                }
+            } // end of getFactByField
+
+            const findAverageDistance = (arr) => {
+                const { length } = arr;
+                return arr.reduce((acc, val) => {
+                    return acc + (val.distance / length);
+                }, 0).toFixed(2);
+            };
+
+            getRandomFact(); // first fact
+        })();
+        // END TRIVIA
+    </script>
+</body>
+
+</html>
+
+<!--
+    for (let seg of segmentData) {
+        console.log(`${seg.name.length} \t ${seg.name} `);
+        //break; // possible in for loop, but not foreach loop
+    }
+-->
