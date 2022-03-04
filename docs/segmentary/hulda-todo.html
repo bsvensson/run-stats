@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"><!-- for emoji happiness-->
+    <link rel='stylesheet'
+        href='https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css'>
+
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.0.0-beta.76/calcite.esm.js"></script>
+    <script nomodule="" src="https://js.arcgis.com/calcite-components/1.0.0-beta.76/calcite.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.0-beta.76/calcite.css" />
+
+    <link href="https://unpkg.com/tabulator-tables@5.1/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.1/dist/js/tabulator.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        body {
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hulda Segments To Run</h1>
+
+    <p>
+        <calcite-button appearance="solid" icon-end="forward" id="button1">Compare Bjorn and Chris
+        </calcite-button>
+        <calcite-button appearance="solid" icon-end="forward" id="button2">Compare Bjorn and Kylie
+        </calcite-button>
+        <calcite-button appearance="solid" icon-end="forward" id="button3">Compare Bjorn and Erwin
+        </calcite-button>
+        <calcite-button appearance="solid" icon-end="forward" id="button4">Compare Kylie and Chris
+        </calcite-button>
+    </p>
+
+    <p id="description"> </p>
+
+    <ul id="segmentListing">
+    </ul>
+
+    <p id="intro"></p>
+
+    <script>
+        (async () => {
+
+            // 1. get segment data
+            // 2. find segments I haven't run
+
+            // Bonus - compare with another runner
+            let r1 = '294207'; //chris
+            let r2 = '1167695'; //bjorn
+            // chris bjorn diff: https://www.strava.com/segments/8731798
+            let r3 = '6260742';//kylie -> 13 segments in common with Bjorn
+            let runners = ['1167695', '6260742']
+
+            // START TRIVIA
+            const descriptionDiv = document.getElementById('description');
+            const segmentListingElement = document.getElementById('segmentListing');
+            const areaname = "Hulda";
+
+            const segmURL = areaname.toLocaleLowerCase() + "-segments.json"
+            const athlURL = areaname.toLocaleLowerCase() + "-athletes.json"
+            let segmentData = [];
+            let athleteData = [];
+
+            document.getElementById("button1").addEventListener("click", function () {
+                runners = ['294207', '1167695'];
+                getCommonSegmentsTodo(runners[0], runners[1]);
+            });
+            document.getElementById("button2").addEventListener("click", function () {
+                runners = ['6260742', '1167695'];
+                getCommonSegmentsTodo(runners[0], runners[1]);
+            });
+            document.getElementById("button3").addEventListener("click", function () {
+                runners = ['16638771', '1167695'];  // erwin 16638771
+                getCommonSegmentsTodo(runners[0], runners[1]);
+            });
+            document.getElementById("button4").addEventListener("click", function () {
+                runners = ['294207', '6260742'];
+                getCommonSegmentsTodo(runners[0], runners[1]);
+            });
+
+            // grab the available HTML file names
+            await axios.get(segmURL)
+                .then(function (response) {
+                    segmentData = response.data; // .body ; //JSON.parse(response.body);
+                    segmentData.forEach((element, index) => {
+                        if (element.name.match(/&#39;/)) {
+                            element.name = element.name.replace(/&#39;/gi, "'");
+                        }
+                    });
+                })
+                .catch(function (error) {
+                    console.error("-------- error 101 ----------");
+                    console.error(error);
+                })
+                .then(function () {
+                    console.log(`~~~~~~~~~~~~~~~~ got data for ${segmentData.length} segments.`)
+                });
+            // end of axiom
+
+            await axios.get(athlURL)
+                .then(function (response) {
+                    athleteData = response.data;
+                    athleteData.forEach((element, index) => {
+                        if (element.name.match(/&#39;/)) {
+                            element.name = element.name.replace(/&#39;/gi, "'");
+                        }
+                    });
+                })
+                .catch(function (error) {
+                    console.error("-------- error 102 ----------");
+                    console.error(error);
+                })
+                .then(function () {
+                    console.log(`~~~~~~~~~~~~~~~~ got data for ${athleteData.length} athletes.`);
+                });
+            // end of axiom
+            console.log("axiom done done")
+
+            function getCommonSegmentsTodo(runner1, runner2) {
+                descriptionDiv.innerHTML = `Comparing ${athleteData.find(element => element.id == runner1).name} and ${athleteData.find(element => element.id == runner2).name} in ${areaname} - which segments have neither run:`;
+
+                document.getElementById("segmentListing").innerHTML = "";
+                var commonSegmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner1) && !seg.athletes.includes(runner2))
+                console.log("commonSegmentsLeft", commonSegmentsLeft)
+                for (var i = 0; i < commonSegmentsLeft.length; i++) {
+                    const fact = `<a href="https://www.strava.com/segments/${commonSegmentsLeft[i].segment}">${commonSegmentsLeft[i].name}</a>
+                    -- ${commonSegmentsLeft[i].distance} miles long, ran by ${commonSegmentsLeft[i].peopleCount} other runners.`;
+                    const newDiv2 = document.createElement("li");
+                    newDiv2.innerHTML = fact;
+                    segmentListingElement.prepend(newDiv2);
+                }
+                return;
+            } // end of getCommonSegmentsTodo
+
+            getCommonSegmentsTodo(runners[0], runners[1]);
+        })();
+        // END EVERYTHIN
+    </script>
+</body>
+
+</html>
