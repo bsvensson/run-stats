@@ -63,6 +63,7 @@
                 '2022segmentcount',
                 'not2022segmentcount',
                 'averageDistance',
+                'averageNameLength',
                 'longName1',
                 'longName2',
                 'shortName1',
@@ -131,9 +132,6 @@
                         }
                     }
                     wordCounts.sort(function (a, b) { return b.count - a.count });  // Sort numbers in descending order:
-                    // number of different "words": wordCounts.length
-                    // climb, ridge, down, up, hulda,
-                    // console.log("word counts:", wordCounts.length, wordCounts.slice(0, 20))
                 })
                 .catch(function (error) {
                     console.error("-------- error 101 ----------");
@@ -142,7 +140,6 @@
                 .then(function () {
                     console.log(`~~~~~~~~~~~~~~~~ got data for ${segmentData.length} segments.`)
                 });
-
 
             // end of axiom
 
@@ -176,6 +173,9 @@
                         case "averageDistance":
                             fact = `Average segment distance is ${findAverageDistance(segmentData)} miles`;
                             break;
+                        case "averageNameLength":
+                            fact = `Average segment name is ${findAverageNameLength(segmentData)} characters long`;
+                            break;
                         case "2022segmentcount":
                             // how many segments run in 2022
                             fact = `${count_everyone_2022s.length} segments (${Math.round(100 * count_everyone_2022s.length / count_everyones.length)}%) have already been run by someone in 2022.`;
@@ -204,7 +204,16 @@
                             break;
                         case 'moreThan1000Runners':
                             pCount = 1000;
-                            fact = segmentData.filter(seg => seg.peopleCount > pCount).length + ` segments have been run by more than ${pCount} people`
+                            const segs__moreThan1000Runners = segmentData.filter(seg => seg.peopleCount > pCount)
+                            const count_moreThan1000Runners = segs__moreThan1000Runners.length;
+                            if (count_moreThan1000Runners > 1){
+                                fact = `Only ${count_moreThan1000Runners} segments have been run by more than ${pCount} people`
+                            } else if (count_moreThan1000Runners == 1) {
+                                fact = `Only one segment have been run by more than ${pCount} people:
+                                <a href="${segs__moreThan1000Runners[0].segment}">${segs__moreThan1000Runners[0].name}</a>`
+                            } else {
+                                fact = `No segments have been run by more than ${pCount} people`
+                            }
                             break;
                         case 'moreThan500Runners':
                             pCount = 500;
@@ -218,19 +227,6 @@
                             // NEVER
                             console.log("Oh oh 103 should not happen");
                     }
-                    /* switch (factType) {
-                        case 11:  // runner with most segments
-                        case 12: // X runners have run more than Y segments (Y > 10)
-                            // 10 * (1 + Math.round(Math.random()); // 10,20,30
-                            const topnums = [10, 25, 50, 75, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 205];
-                            const randomIndex = Math.floor(Math.random() * topnums.length);
-                            // get random item
-                            const topnum = topnums[randomIndex];
-                            // segmentData.sort((a, b) => {
-                            //     return b.peopleCount - a.peopleCount;
-                            // });
-                            fact = `X runners have done more than ${topnum} segments --- `
-                    } */
                 }
                 const newDiv2 = document.createElement("li");
                 newDiv2.innerHTML = fact;
@@ -313,6 +309,13 @@
                 return arr.reduce((acc, val) => {
                     return acc + (val.distance / length);
                 }, 0).toFixed(2);
+            };
+
+            const findAverageNameLength = (arr) => {
+                const { length } = arr;
+                return arr.reduce((acc, val) => {
+                    return acc + (val.name.length / length);
+                }, 0).toFixed(1);
             };
 
             getRandomFact(); // first fact
