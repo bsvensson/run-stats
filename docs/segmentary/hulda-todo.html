@@ -40,6 +40,7 @@
         <calcite-button appearance="solid" id="button13">Kylie</calcite-button>
         <calcite-button appearance="solid" id="button14">Zara</calcite-button>
         <calcite-button appearance="solid" id="button25">Bjorn but not Kylie</calcite-button>
+        <calcite-button appearance="solid" id="button26">Kylie but not Bjorn</calcite-button>
     </div>
 
     <div id="description" style="padding-top:1em"></div>
@@ -99,6 +100,9 @@
             document.getElementById("button25").addEventListener("click", function () {
                 getUniqueSegmentsTodo('1167695', '6260742'); // bjorn but not kylie
             });
+            document.getElementById("button26").addEventListener("click", function () {
+                getUniqueSegmentsTodo('6260742', '1167695'); // kylie but not bjorn
+            });
 
             // grab the available HTML file names
             await axios.get(segmURL)
@@ -140,7 +144,6 @@
                     console.log(`~~~~~~~~~~~~~~~~ got data for ${athleteData.length} athletes.`);
                 });
             // end of axiom
-            console.log("axiom done done")
 
             function personalSegmentsTodo(runner) {
                 let segmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner))
@@ -148,7 +151,6 @@
                  have not yet run in <b>${areaname}</b> area:`;
 
                 document.getElementById("segmentListing").innerHTML = "";
-                console.log("segmentsLeft", segmentsLeft)
                 for (var i = 0; i < segmentsLeft.length; i++) {
                     const fact = `<a href="https://www.strava.com/segments/${segmentsLeft[i].segment}">${segmentsLeft[i].name}</a>
                     -- ${segmentsLeft[i].distance} miles long, ran by ${segmentsLeft[i].peopleCount} other runners.`;
@@ -165,7 +167,6 @@
                 const segmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner1) && seg.athletes.includes(runner2))
                 descriptionDiv.innerHTML = `<a href="https://www.strava.com/athletes/{${runner1}">${athleteData.find(element => element.id == runner1).name}</a>
                 has ${segmentsLeft.length} segments left to run, that <a href="https://www.strava.com/athletes/{${runner2}">${athleteData.find(element => element.id == runner2).name}</a> have already run.`;
-                console.log("segmentsLeft", segmentsLeft)
                 for (var i = 0; i < segmentsLeft.length; i++) {
                     const fact = `<a href="https://www.strava.com/segments/${segmentsLeft[i].segment}">${segmentsLeft[i].name}</a>
                     -- ${segmentsLeft[i].distance} miles long, ran by ${segmentsLeft[i].peopleCount} other runners.`;
@@ -182,7 +183,6 @@
                 descriptionDiv.innerHTML = `Comparing <a href="https://www.strava.com/athletes/{${runner1}">${athleteData.find(element => element.id == runner1).name}</a>
                 and <a href="https://www.strava.com/athletes/{${runner2}">${athleteData.find(element => element.id == runner2).name}</a> in <b>${areaname}</b> area.
                 <br><br>There are ${commonSegmentsLeft.length} segments that neither have run:`;
-                console.log("commonSegmentsLeft", commonSegmentsLeft)
                 for (var i = 0; i < commonSegmentsLeft.length; i++) {
                     const fact = `<a href="https://www.strava.com/segments/${commonSegmentsLeft[i].segment}">${commonSegmentsLeft[i].name}</a>
                     -- ${commonSegmentsLeft[i].distance} miles long, ran by ${commonSegmentsLeft[i].peopleCount} other runners.`;
