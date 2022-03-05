@@ -19,44 +19,41 @@
         body {
             padding: 1em;
         }
+
+        calcite-button {
+            padding: 0.15em
+        }
     </style>
 </head>
 
 <body>
     <h1>Hulda Segments To Run</h1>
 
-    <p>
-        <calcite-button appearance="solid" icon-end="forward" id="button1">Compare Bjorn and Chris
-        </calcite-button>
-        <calcite-button appearance="solid" icon-end="forward" id="button2">Compare Bjorn and Kylie
-        </calcite-button>
-        <calcite-button appearance="solid" icon-end="forward" id="button3">Compare Bjorn and Erwin
-        </calcite-button>
-        <calcite-button appearance="solid" icon-end="forward" id="button4">Compare Kylie and Chris
-        </calcite-button>
+    <div>
+        <calcite-button appearance="solid" id="button1">Compare Bjorn and Chris</calcite-button>
+        <calcite-button appearance="solid" id="button2">Compare Bjorn and Kylie</calcite-button>
+        <calcite-button appearance="solid" id="button3">Compare Bjorn and Erwin</calcite-button>
+        <calcite-button appearance="solid" id="button4">Compare Kylie and Chris</calcite-button>
+        <calcite-button appearance="solid" id="button5">Compare Bjorn and Zara</calcite-button>
+        <calcite-button appearance="solid" id="button11">Bjorn</calcite-button>
+        <calcite-button appearance="solid" id="button12">Chris</calcite-button>
+        <calcite-button appearance="solid" id="button13">Kylie</calcite-button>
+        <calcite-button appearance="solid" id="button14">Zara</calcite-button>
+        <calcite-button appearance="solid" id="button25">Bjorn but not Kylie</calcite-button>
+    </div>
+
+    <div id="description" style="padding-top:1em"></div>
+
+    <ol id="segmentListing">
+    </ol>
+
+    <p id="intro">
+        Map coming soon-ish...
     </p>
-
-    <p id="description"> </p>
-
-    <ul id="segmentListing">
-    </ul>
-
-    <p id="intro"></p>
 
     <script>
         (async () => {
 
-            // 1. get segment data
-            // 2. find segments I haven't run
-
-            // Bonus - compare with another runner
-            let r1 = '294207'; //chris
-            let r2 = '1167695'; //bjorn
-            // chris bjorn diff: https://www.strava.com/segments/8731798
-            let r3 = '6260742';//kylie -> 13 segments in common with Bjorn
-            let runners = ['1167695', '6260742']
-
-            // START TRIVIA
             const descriptionDiv = document.getElementById('description');
             const segmentListingElement = document.getElementById('segmentListing');
             const areaname = "Hulda";
@@ -66,21 +63,41 @@
             let segmentData = [];
             let athleteData = [];
 
+            const href = window.location.href;
+            const pageURL = new URL(href);
+            const initialRunner = pageURL.searchParams.get("runner") || "1167695";
+            const initialRunners = pageURL.searchParams.get("runners") || false;
+
+            document.getElementById("button11").addEventListener("click", function () {
+                personalSegmentsTodo('1167695'); // Bjorn
+            });
+            document.getElementById("button12").addEventListener("click", function () {
+                personalSegmentsTodo('294207'); // Chris
+            });
+            document.getElementById("button13").addEventListener("click", function () {
+                personalSegmentsTodo('6260742'); // Kylie
+            });
+            document.getElementById("button14").addEventListener("click", function () {
+                personalSegmentsTodo('23099564'); // Zara
+            });
+
             document.getElementById("button1").addEventListener("click", function () {
-                runners = ['294207', '1167695'];
-                getCommonSegmentsTodo(runners[0], runners[1]);
+                getCommonSegmentsTodo('294207', '1167695');
             });
             document.getElementById("button2").addEventListener("click", function () {
-                runners = ['6260742', '1167695'];
-                getCommonSegmentsTodo(runners[0], runners[1]);
+                getCommonSegmentsTodo('6260742', '1167695');
             });
             document.getElementById("button3").addEventListener("click", function () {
-                runners = ['16638771', '1167695'];  // erwin 16638771
-                getCommonSegmentsTodo(runners[0], runners[1]);
+                getCommonSegmentsTodo('16638771', '1167695'); // erwin 16638771
             });
             document.getElementById("button4").addEventListener("click", function () {
-                runners = ['294207', '6260742'];
-                getCommonSegmentsTodo(runners[0], runners[1]);
+                getCommonSegmentsTodo('294207', '6260742');
+            });
+            document.getElementById("button5").addEventListener("click", function () {
+                getCommonSegmentsTodo('1167695', '23099564'); // bjorn and zara
+            });
+            document.getElementById("button25").addEventListener("click", function () {
+                getUniqueSegmentsTodo('1167695', '6260742'); // bjorn but not kylie
             });
 
             // grab the available HTML file names
@@ -99,6 +116,10 @@
                 })
                 .then(function () {
                     console.log(`~~~~~~~~~~~~~~~~ got data for ${segmentData.length} segments.`)
+                    segmentData.sort((a, b) => {
+                        return a['peopleCount'] - b['peopleCount'];  // highest first
+                    });
+
                 });
             // end of axiom
 
@@ -121,11 +142,46 @@
             // end of axiom
             console.log("axiom done done")
 
-            function getCommonSegmentsTodo(runner1, runner2) {
-                descriptionDiv.innerHTML = `Comparing ${athleteData.find(element => element.id == runner1).name} and ${athleteData.find(element => element.id == runner2).name} in ${areaname} - which segments have neither run:`;
+            function personalSegmentsTodo(runner) {
+                let segmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner))
+                descriptionDiv.innerHTML = `${segmentsLeft.length} segments that <a href="https://www.strava.com/athletes/{${runner}">${athleteData.find(element => element.id == runner).name}</a>
+                 have not yet run in <b>${areaname}</b> area:`;
 
                 document.getElementById("segmentListing").innerHTML = "";
-                var commonSegmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner1) && !seg.athletes.includes(runner2))
+                console.log("segmentsLeft", segmentsLeft)
+                for (var i = 0; i < segmentsLeft.length; i++) {
+                    const fact = `<a href="https://www.strava.com/segments/${segmentsLeft[i].segment}">${segmentsLeft[i].name}</a>
+                    -- ${segmentsLeft[i].distance} miles long, ran by ${segmentsLeft[i].peopleCount} other runners.`;
+                    const newDiv2 = document.createElement("li");
+                    newDiv2.innerHTML = fact;
+                    segmentListingElement.prepend(newDiv2);
+                }
+                // This will create a new entry in the browser's history, without reloading
+                window.history.pushState({}, '', `?runner=${runner}`);
+            } // end of personalSegmentsTodo
+
+            function getUniqueSegmentsTodo(runner1, runner2) {
+                document.getElementById("segmentListing").innerHTML = "";
+                const segmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner1) && seg.athletes.includes(runner2))
+                descriptionDiv.innerHTML = `<a href="https://www.strava.com/athletes/{${runner1}">${athleteData.find(element => element.id == runner1).name}</a>
+                has ${segmentsLeft.length} segments left to run, that <a href="https://www.strava.com/athletes/{${runner2}">${athleteData.find(element => element.id == runner2).name}</a> have already run.`;
+                console.log("segmentsLeft", segmentsLeft)
+                for (var i = 0; i < segmentsLeft.length; i++) {
+                    const fact = `<a href="https://www.strava.com/segments/${segmentsLeft[i].segment}">${segmentsLeft[i].name}</a>
+                    -- ${segmentsLeft[i].distance} miles long, ran by ${segmentsLeft[i].peopleCount} other runners.`;
+                    const newDiv2 = document.createElement("li");
+                    newDiv2.innerHTML = fact;
+                    segmentListingElement.prepend(newDiv2);
+                }
+                window.history.pushState({}, '', `?runners=${runner1}|${runner2}`);
+            }
+
+            function getCommonSegmentsTodo(runner1, runner2) {
+                document.getElementById("segmentListing").innerHTML = "";
+                const commonSegmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner1) && !seg.athletes.includes(runner2))
+                descriptionDiv.innerHTML = `Comparing <a href="https://www.strava.com/athletes/{${runner1}">${athleteData.find(element => element.id == runner1).name}</a>
+                and <a href="https://www.strava.com/athletes/{${runner2}">${athleteData.find(element => element.id == runner2).name}</a> in <b>${areaname}</b> area.
+                <br><br>There are ${commonSegmentsLeft.length} segments that neither have run:`;
                 console.log("commonSegmentsLeft", commonSegmentsLeft)
                 for (var i = 0; i < commonSegmentsLeft.length; i++) {
                     const fact = `<a href="https://www.strava.com/segments/${commonSegmentsLeft[i].segment}">${commonSegmentsLeft[i].name}</a>
@@ -134,12 +190,21 @@
                     newDiv2.innerHTML = fact;
                     segmentListingElement.prepend(newDiv2);
                 }
-                return;
+                // This will create a new entry in the browser's history, without reloading
+                window.history.pushState({}, '', `?runners=${runner1},${runner2}`);
             } // end of getCommonSegmentsTodo
 
-            getCommonSegmentsTodo(runners[0], runners[1]);
-        })();
-        // END EVERYTHIN
+            // everything setup, time to run something
+            if (initialRunners && initialRunners.match(/,/)) {
+                let [runnerId1, runnerId2] = initialRunners.split(',');
+                getCommonSegmentsTodo(runnerId1, runnerId2);
+            } else if (initialRunners && initialRunners.match(/|/)) {
+                let [runnerId1, runnerId2] = initialRunners.split('|');
+                getUniqueSegmentsTodo(runnerId1, runnerId2);
+            } else {
+                personalSegmentsTodo(initialRunner);
+            }
+        })(); // end main async
     </script>
 </body>
 
