@@ -72,7 +72,10 @@
                 'commonWord2',
                 'moreThan1000Runners',
                 'moreThan500Runners',
-                'moreThan100Runners'
+                'moreThan100Runners',
+                'huldacrooks1',
+                'huldacrooks2',
+                'oldestsegment'
             ]
             const maxFacts = possibleFacts.length;
             let factCount = 0;
@@ -206,7 +209,7 @@
                             pCount = 1000;
                             const segs__moreThan1000Runners = segmentData.filter(seg => seg.peopleCount > pCount)
                             const count_moreThan1000Runners = segs__moreThan1000Runners.length;
-                            if (count_moreThan1000Runners > 1){
+                            if (count_moreThan1000Runners > 1) {
                                 fact = `Only ${count_moreThan1000Runners} segments have been run by more than ${pCount} people`
                             } else if (count_moreThan1000Runners == 1) {
                                 fact = `Only one segment have been run by more than ${pCount} people:
@@ -223,6 +226,18 @@
                             pCount = 100;
                             fact = `More than ${pCount} people have run over ${segmentData.filter(seg => seg.peopleCount > pCount).length} segments in ${areaname}`
                             break;
+                        case 'huldacrooks1':
+                            fact = `<a href="https://en.wikipedia.org/wiki/Hulda_Crooks">Hulda Crooks</a> (1896-1997) was an awesome lady - check out <a href="https://diabetesdietdialogue.wordpress.com/2007/07/28/who-are-the-oldest-people-on-our-planet-and-why-are-they-that-healthy-part-6/">this article</a>`
+                            break;
+                        case 'huldacrooks2':
+                            fact = `Hulda Crooks Park is named after <a href="https://en.wikipedia.org/wiki/Hulda_Crooks">Hulda Crooks</a> (1896-1997), aka "Grandma Whitney", and is also what most people call the whole <a href="https://www.lomalinda-ca.gov/common/pages/DisplayFile.aspx?itemId=7918026">South Hills Preserve</a> area`
+                            break;
+                        case 'oldestsegment':
+                            segmentData.sort((a, b) => {
+                                return a.segment - b.segment;  // lowest number first
+                            });
+                            fact = `The oldest segment is <a href="https://www.strava.com/segments/${segmentData[0].segment}">${segmentData[0].name}</a>`
+                            break
                         default:
                             // NEVER
                             console.log("Oh oh 103 should not happen");
@@ -322,6 +337,7 @@
         })();
         // END TRIVIA
     </script>
+    <hr>
 </body>
 
 </html>
