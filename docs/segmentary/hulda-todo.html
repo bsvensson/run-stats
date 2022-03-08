@@ -29,18 +29,11 @@
 <body>
     <h1>Hulda Segments To Run</h1>
 
-    <div>
-        <calcite-button appearance="solid" id="button1">Compare Bjorn and Chris</calcite-button>
-        <calcite-button appearance="solid" id="button2">Compare Bjorn and Kylie</calcite-button>
-        <calcite-button appearance="solid" id="button3">Compare Bjorn and Erwin</calcite-button>
-        <calcite-button appearance="solid" id="button4">Compare Kylie and Chris</calcite-button>
-        <calcite-button appearance="solid" id="button5">Compare Bjorn and Zara</calcite-button>
-        <calcite-button appearance="solid" id="button11">Bjorn</calcite-button>
-        <calcite-button appearance="solid" id="button12">Chris</calcite-button>
-        <calcite-button appearance="solid" id="button13">Kylie</calcite-button>
-        <calcite-button appearance="solid" id="button14">Zara</calcite-button>
-        <calcite-button appearance="solid" id="button25">Bjorn but not Kylie</calcite-button>
-        <calcite-button appearance="solid" id="button26">Kylie but not Bjorn</calcite-button>
+    <div id="personalButtons">Segments left to run for:
+    </div>
+    <div id="multiPersonButtons">Segments left to run for both:
+    </div>
+    <div id="butnotbuttons">Segments left to run for ... but already run by ...
     </div>
 
     <div id="description" style="padding-top:1em"></div>
@@ -48,10 +41,13 @@
     <ol id="segmentListing">
     </ol>
 
+    <hr>
     <p id="intro">
         Map coming soon-ish...
     </p>
-
+    <hr>
+    <footer>Note that you can add anyone's strava athlete id to get the URL parameter (as shown be the button examples
+        above).</footer>
     <script>
         (async () => {
 
@@ -69,39 +65,51 @@
             const initialRunner = pageURL.searchParams.get("runner") || "1167695";
             const initialRunners = pageURL.searchParams.get("runners") || false;
 
-            document.getElementById("button11").addEventListener("click", function () {
-                personalSegmentsTodo('1167695'); // Bjorn
-            });
-            document.getElementById("button12").addEventListener("click", function () {
-                personalSegmentsTodo('294207'); // Chris
-            });
-            document.getElementById("button13").addEventListener("click", function () {
-                personalSegmentsTodo('6260742'); // Kylie
-            });
-            document.getElementById("button14").addEventListener("click", function () {
-                personalSegmentsTodo('23099564'); // Zara
-            });
+            const runnerButtons =
+            {
+                'Bjorn': '1167695',
+                'Chris': '294207',
+                'Erwin': '16638771',
+                'Kylie': '6260742',
+                'Zara': '23099564'
+            };
 
-            document.getElementById("button1").addEventListener("click", function () {
-                getCommonSegmentsTodo('294207', '1167695');
+            const personalButtonsDiv = document.getElementById('personalButtons');
+            const multiPersonButtonsDiv = document.getElementById('multiPersonButtons');
+            const butnotbuttonsDiv = document.getElementById('butnotbuttons');
+
+            for (const runnerName in runnerButtons) {
+                let cb = document.createElement("calcite-button")
+                cb.id = runnerButtons[runnerName];
+                cb.innerHTML = runnerName;
+                personalButtonsDiv.append(cb)
+                cb.addEventListener("click", function () {
+                    personalSegmentsTodo(runnerButtons[runnerName]);
+                });
+                if (runnerName != "Bjorn") {
+                    let cb = document.createElement("calcite-button")
+                    cb.id = runnerButtons["Bjorn"] + "--" + runnerButtons[runnerName];
+                    cb.innerHTML = "Bjorn & " + runnerName;
+                    multiPersonButtonsDiv.append(cb)
+                    cb.addEventListener("click", function () {
+                        getCommonSegmentsTodo(runnerButtons["Bjorn"], runnerButtons[runnerName]);
+                    });
+                }
+            }
+            // the two BUTNOT buttons
+            let cb1 = document.createElement("calcite-button");
+            let cb2 = document.createElement("calcite-button");
+            cb1.id = runnerButtons["Bjorn"] + "--butnot--" + runnerButtons["Kylie"];
+            cb2.id = runnerButtons["Kylie"] + "--butnot--" + runnerButtons["Bjorn"];
+            cb1.innerHTML = "Bjorn but not Kylie";
+            cb2.innerHTML = "Kylie but not Bjorn";
+            butnotbuttonsDiv.append(cb1);
+            butnotbuttonsDiv.append(cb2);
+            cb1.addEventListener("click", function () {
+                getUniqueSegmentsTodo(runnerButtons["Bjorn"], runnerButtons["Kylie"]);
             });
-            document.getElementById("button2").addEventListener("click", function () {
-                getCommonSegmentsTodo('6260742', '1167695');
-            });
-            document.getElementById("button3").addEventListener("click", function () {
-                getCommonSegmentsTodo('16638771', '1167695'); // erwin 16638771
-            });
-            document.getElementById("button4").addEventListener("click", function () {
-                getCommonSegmentsTodo('294207', '6260742');
-            });
-            document.getElementById("button5").addEventListener("click", function () {
-                getCommonSegmentsTodo('1167695', '23099564'); // bjorn and zara
-            });
-            document.getElementById("button25").addEventListener("click", function () {
-                getUniqueSegmentsTodo('1167695', '6260742'); // bjorn but not kylie
-            });
-            document.getElementById("button26").addEventListener("click", function () {
-                getUniqueSegmentsTodo('6260742', '1167695'); // kylie but not bjorn
+            cb2.addEventListener("click", function () {
+                getUniqueSegmentsTodo(runnerButtons["Kylie"], runnerButtons["Bjorn"]);
             });
 
             // grab the available HTML file names
@@ -147,6 +155,18 @@
 
             function personalSegmentsTodo(runner) {
                 let segmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner))
+                let thatTarget = document.getElementById(runner);
+
+                if (thatTarget) {
+                    let runnerName;
+                    for (const [key, value] of Object.entries(runnerButtons)) {
+                        if (value == runner) {
+                            runnerName = key
+                        }
+                    }
+                    thatTarget.innerHTML = `${runnerName} (${segmentsLeft.length})`
+                }
+
                 descriptionDiv.innerHTML = `${segmentsLeft.length} segments that <a href="https://www.strava.com/athletes/{${runner}">${athleteData.find(element => element.id == runner).name}</a>
                  have not yet run in <b>${areaname}</b> area:`;
 
@@ -165,6 +185,21 @@
             function getUniqueSegmentsTodo(runner1, runner2) {
                 document.getElementById("segmentListing").innerHTML = "";
                 const segmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner1) && seg.athletes.includes(runner2))
+                let thatTarget = document.getElementById(runner1 + '--butnot--' + runner2);
+
+                if (thatTarget) {
+                    let runnerName1, runnerName2;
+                    for (const [key, value] of Object.entries(runnerButtons)) {
+                        if (value == runner1) {
+                            runnerName1 = key;
+                        } else if (value == runner2) {
+                            runnerName2 = key;
+                        }
+
+                    }
+                    thatTarget.innerHTML = `${runnerName1} but not ${runnerName2} (${segmentsLeft.length})`
+                }
+
                 descriptionDiv.innerHTML = `<a href="https://www.strava.com/athletes/{${runner1}">${athleteData.find(element => element.id == runner1).name}</a>
                 has ${segmentsLeft.length} segments left to run, that <a href="https://www.strava.com/athletes/{${runner2}">${athleteData.find(element => element.id == runner2).name}</a> have already run.`;
                 for (var i = 0; i < segmentsLeft.length; i++) {
@@ -180,6 +215,21 @@
             function getCommonSegmentsTodo(runner1, runner2) {
                 document.getElementById("segmentListing").innerHTML = "";
                 const commonSegmentsLeft = segmentData.filter(seg => !seg.athletes.includes(runner1) && !seg.athletes.includes(runner2))
+                let thatTarget = document.getElementById(runner1 + '--' + runner2);
+
+                if (thatTarget) {
+                    let runnerName1, runnerName2;
+                    for (const [key, value] of Object.entries(runnerButtons)) {
+                        if (value == runner1) {
+                            runnerName1 = key;
+                        } else if (value == runner2) {
+                            runnerName2 = key;
+                        }
+
+                    }
+                    thatTarget.innerHTML = `${runnerName1} & ${runnerName2} (${commonSegmentsLeft.length})`
+                }
+
                 descriptionDiv.innerHTML = `Comparing <a href="https://www.strava.com/athletes/{${runner1}">${athleteData.find(element => element.id == runner1).name}</a>
                 and <a href="https://www.strava.com/athletes/{${runner2}">${athleteData.find(element => element.id == runner2).name}</a> in <b>${areaname}</b> area.
                 <br><br>There are ${commonSegmentsLeft.length} segments that neither have run:`;
