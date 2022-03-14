@@ -76,7 +76,8 @@
                 'huldacrooks1',
                 'huldacrooks2',
                 'oldestsegment',
-                'burros'
+                'burroSegments',
+                'burroFact1'
             ]
             const maxFacts = possibleFacts.length;
             let factCount = 0;
@@ -239,7 +240,7 @@
                             });
                             fact = `The oldest segment is <a href="https://www.strava.com/segments/${segmentData[0].segment}">${segmentData[0].name}</a>`
                             break
-                        case 'burros':
+                        case 'burroSegments':
                             const segs = segmentData.filter(seg => seg.name.toLowerCase().includes('burro') || seg.name.toLowerCase().includes('donkey'))
                             fact = segs.length + ` segments with Burro-related names: `; //
                             segs.forEach((element, index) => {
@@ -249,6 +250,9 @@
                                     fact += `<a href="https://www.strava.com/segments/${element.segment}">${element.name}</a>, `;
                                 }
                             });
+                            break;
+                        case 'burroFact1':
+                            fact = `Burros are a member of the horse family, Equidae. Originally from Africa, they were introduced to the Desert Southwest by the Spaniards in the 1500s. (The word “burro” is derived from the Spanish word “borrico,” meaning donkey.)`
                             break;
                         default:
                             // NEVER
