@@ -75,7 +75,8 @@
                 'moreThan100Runners',
                 'huldacrooks1',
                 'huldacrooks2',
-                'oldestsegment'
+                'oldestsegment',
+                'burros'
             ]
             const maxFacts = possibleFacts.length;
             let factCount = 0;
@@ -238,6 +239,17 @@
                             });
                             fact = `The oldest segment is <a href="https://www.strava.com/segments/${segmentData[0].segment}">${segmentData[0].name}</a>`
                             break
+                        case 'burros':
+                            const segs = segmentData.filter(seg => seg.name.toLowerCase().includes('burro') || seg.name.toLowerCase().includes('donkey'))
+                            fact = segs.length + ` segments with Burro-related names: `; //
+                            segs.forEach((element, index) => {
+                                if (index == segs.length - 1) {
+                                    fact += ` and <a href="https://www.strava.com/segments/${element.segment}">${element.name}</a>`;
+                                } else {
+                                    fact += `<a href="https://www.strava.com/segments/${element.segment}">${element.name}</a>, `;
+                                }
+                            });
+                            break;
                         default:
                             // NEVER
                             console.log("Oh oh 103 should not happen");
