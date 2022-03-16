@@ -45,9 +45,13 @@
             const trivialistElement = document.getElementById('trivialist');
             const areaname = "Hulda";
 
-            const baseURL = areaname.toLocaleLowerCase() + "-segments.json"
+            const segmentsURL = areaname.toLocaleLowerCase() + "-segments.json"
+            const athletesURL = areaname.toLocaleLowerCase() + "-athletes.json"
             const maxcase = 13; // for +1 factTypes
             let segments = [];
+            let athleteData = [];
+            let crowns2022 = [];
+            let crowns = [];
             let names = [];
             let attempts = [];
             let peopleCounts = [];
@@ -77,8 +81,14 @@
                 'huldacrooks2',
                 'oldestsegment',
                 'burroSegments',
-                'burroFact1'
+                'rabbitSegments',
+                'burroFact1',
+                'crowns2022',
+                'crowns',
+                'peopleWithCrowns',
+                'peopleWithCrowns2022'
             ]
+            //possibleFacts = ['peopleWithCrowns2022']; // crowns2022', 'crowns
             const maxFacts = possibleFacts.length;
             let factCount = 0;
 
@@ -89,7 +99,7 @@
             });
 
             // grab the available HTML file names
-            await axios.get(baseURL)
+            await axios.get(segmentsURL)
                 .then(function (response) {
                     segmentData = response.data; // .body ; //JSON.parse(response.body);
                     descriptionDiv.innerHTML += `Random stats about the ${segmentData.length} segments in ${areaname}.`;
@@ -106,7 +116,16 @@
                         if (element.count_everyone_2022 > 0) {
                             count_everyone_2022s.push(element.count_everyone_2022);
                         }
+                        if (element.athletes) {
+                            crowns.push(element.athletes[0]);
+                            if (element.athletes_2022) {
+                                crowns2022.push(element.athletes_2022[0]);
+                            }
+                        }
                     });
+
+                    crowns.sort((a, b) => { return a.count > b.count ? -1 : 1 }); // most crows first
+                    crowns2022.sort((a, b) => { return a.count > b.count ? -1 : 1 }); // most crows first
                     segments.sort(function (a, b) { return a - b }); // sort numbers in asc
                     names.sort();
                     attempts.sort(function (a, b) { return b - a });  // Sort numbers in descending order:
@@ -146,7 +165,22 @@
                     console.log(`~~~~~~~~~~~~~~~~ got data for ${segmentData.length} segments.`)
                 });
 
-            // end of axiom
+            // end of axiom 1
+
+            await axios.get(athletesURL)
+                .then(function (response) {
+                    athleteData = response.data; // .body ; //JSON.parse(response.body);
+                    descriptionDiv.innerHTML += ` And its ${athleteData.length} runners.`;
+                })
+                .catch(function (error) {
+                    console.error("-------- error 102 ----------");
+                    console.error(error);
+                })
+                .then(function () {
+                    console.log(`~~~~~~~~~~~~~~~~ got data for ${segmentData.length} segments.`)
+                });
+
+            // end of axiom 2
 
             function getRandomFact() {
                 let fact = "";
@@ -241,10 +275,21 @@
                             fact = `The oldest segment is <a href="https://www.strava.com/segments/${segmentData[0].segment}">${segmentData[0].name}</a>`
                             break
                         case 'burroSegments':
-                            const segs = segmentData.filter(seg => seg.name.toLowerCase().includes('burro') || seg.name.toLowerCase().includes('donkey'))
-                            fact = segs.length + ` segments with Burro-related names: `; //
-                            segs.forEach((element, index) => {
-                                if (index == segs.length - 1) {
+                            const segs1 = segmentData.filter(seg => seg.name.toLowerCase().includes('burro') || seg.name.toLowerCase().includes('donkey'))
+                            fact = segs1.length + ` segments with Burro-related names: `; //
+                            segs1.forEach((element, index) => {
+                                if (index == segs1.length - 1) {
+                                    fact += ` and <a href="https://www.strava.com/segments/${element.segment}">${element.name}</a>`;
+                                } else {
+                                    fact += `<a href="https://www.strava.com/segments/${element.segment}">${element.name}</a>, `;
+                                }
+                            });
+                            break;
+                        case 'rabbitSegments':
+                            const segs3 = segmentData.filter(seg => seg.name.toLowerCase().includes('rabbit') || seg.name.toLowerCase().includes('bunny'))
+                            fact = segs3.length + ` segments with Rabbit-related names: `; //
+                            segs3.forEach((element, index) => {
+                                if (index == segs3.length - 1) {
                                     fact += ` and <a href="https://www.strava.com/segments/${element.segment}">${element.name}</a>`;
                                 } else {
                                     fact += `<a href="https://www.strava.com/segments/${element.segment}">${element.name}</a>, `;
@@ -253,6 +298,54 @@
                             break;
                         case 'burroFact1':
                             fact = `Burros are a member of the horse family, Equidae. Originally from Africa, they were introduced to the Desert Southwest by the Spaniards in the 1500s. (The word “burro” is derived from the Spanish word “borrico,” meaning donkey.)`
+                            break;
+                        case 'crowns2022':
+                            // most crowns in 2022
+                            fact = `Most "fastest time of 2022" in ${areaname}: `;
+                            const topCrowns2022 = mostFrequent(crowns2022, 1)
+                            topCrowns2022.forEach((topAthlete, index) => {
+                                const thisAthlete = athleteData.filter(athlete => athlete.id == topAthlete.id)[0];
+                                if (topCrowns2022.length == 1) {
+                                    fact += ` <a href="https://www.strava.com/athletes/${thisAthlete.id}/">${thisAthlete.name}</a> `;
+                                    fact += `has ${topAthlete.count} crowns.`; //
+                                } else {
+                                    if (index == topCrowns2022.length - 1) {
+                                        fact += ` and <a href="https://www.strava.com/athletes/${thisAthlete.id}/">${thisAthlete.name}</a>.`;
+                                        fact += ` All ${topCrowns2022.length} have ${topAthlete.count} crowns.`; //
+                                    } else {
+                                        fact += `<a href="https://www.strava.com/segments/${thisAthlete.id}">${thisAthlete.name}</a>, `;
+                                    }
+                                }
+                            });
+                            break;
+                        case 'crowns':
+                            // most crowns overall
+                            fact = `Most overall crowns in ${areaname}: `;
+                            const topCrowns = mostFrequent(crowns, 1)
+                            topCrowns.forEach((topAthlete, index) => {
+                                const thisAthlete = athleteData.filter(athlete => athlete.id == topAthlete.id)[0];
+                                if (topCrowns.length == 1) {
+                                    fact += ` <a href="https://www.strava.com/athletes/${thisAthlete.id}/">${thisAthlete.name}</a> `;
+                                    fact += `has ${topAthlete.count} crowns.`; //
+                                } else {
+                                    if (index == topCrowns.length - 1) {
+                                        fact += ` and <a href="https://www.strava.com/athletes/${thisAthlete.id}/">${thisAthlete.name}</a>`;
+                                        fact += `. All ${topCrowns.length} have ${topAthlete.count} crowns.`; //
+                                    } else {
+                                        fact += `<a href="https://www.strava.com/segments/${thisAthlete.id}">${thisAthlete.name}</a>, `;
+                                    }
+                                }
+                            });
+                            break;
+                        case 'peopleWithCrowns':
+                            const peopleWithCrowns = mostFrequent(crowns);
+                            fact = `${peopleWithCrowns.length} different people have at least one crown in ${areaname}.`;
+                            console.log("People with crowns:", peopleWithCrowns);
+                            break;
+                        case 'peopleWithCrowns2022':
+                            const peopleWithCrowns2022 = mostFrequent(crowns2022);
+                            fact = `${peopleWithCrowns2022.length} different people have a "fastest time of 2022" on at least one segment in ${areaname}.`;
+                            console.log("Fastest time in 2022:", peopleWithCrowns2022);
                             break;
                         default:
                             // NEVER
@@ -264,6 +357,30 @@
                 trivialistElement.prepend(newDiv2);
                 return;
             } // end of getRandomFact
+
+            function mostFrequent(items, k) {
+                // from a comment in https://dev.to/alisabaj/finding-the-most-frequent-elements-in-an-array-10k2
+                let lookup = {};
+                let output = [];
+                let itemCounter = 0;
+                for (var i = 0; i < items.length; i++) {
+                    // Have we seen this item before or not?
+                    if (!lookup[items[i]]) {
+                        // No? Ok, create an object in our lookup
+                        // and set reference to it in our output array
+                        lookup[items[i]] = { "count": 0, "id": items[i] };
+                        output.push(lookup[items[i]]);
+                        itemCounter++;
+                    }
+                    // Add one to the "count" attribute in our lookup
+                    // which adds one to the count attribute in our "output" array
+                    lookup[items[i]].count++;
+                }
+                // Bjorn - Sort descending, return all that has same count or more as top {{k}} results
+                output.sort((a, b) => { return a.count > b.count ? -1 : 1 });
+                if (!k) { k = output.length - 1 } // show all
+                return output.filter(seg => seg.count >= output[k - 1].count);
+            }
 
             function getFactByField(casenum, factField) {
                 if (factField == "name") {
