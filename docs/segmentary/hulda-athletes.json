@@ -253,10 +253,18 @@
   "gender": "M"
  },
  {
+  "id": "417251",
+  "name": "Alex Nelson",
+  "mentions": 102,
+  "mentions_2022": 1,
+  "rank": 34,
+  "gender": "M"
+ },
+ {
   "id": "16062156",
   "name": "Eric Wainz",
   "mentions": 101,
-  "rank": 34,
+  "rank": 35,
   "gender": "M"
  },
  {
@@ -264,16 +272,8 @@
   "name": "Stacey Belliard",
   "mentions": 101,
   "mentions_2022": 1,
-  "rank": "(34)",
+  "rank": "(35)",
   "gender": "F"
- },
- {
-  "id": "417251",
-  "name": "Alex Nelson",
-  "mentions": 101,
-  "mentions_2022": 1,
-  "rank": "(34)",
-  "gender": "M"
  },
  {
   "id": "18829849",
@@ -368,6 +368,14 @@
   "gender": "F"
  },
  {
+  "id": "3439312",
+  "name": "Rich Johnstone",
+  "mentions": 84,
+  "mentions_2022": 1,
+  "rank": "(48)",
+  "gender": "M"
+ },
+ {
   "id": "36706356",
   "name": "Travis Fisher",
   "mentions": 84,
@@ -385,22 +393,14 @@
   "id": "1693965",
   "name": "bryan tsao",
   "mentions": 83,
-  "rank": 51,
+  "rank": 52,
   "gender": "M"
  },
  {
   "id": "1844248",
   "name": "Randy Vipond",
   "mentions": 83,
-  "rank": "(51)",
-  "gender": "M"
- },
- {
-  "id": "3439312",
-  "name": "Rich Johnstone",
-  "mentions": 83,
-  "mentions_2022": 1,
-  "rank": "(51)",
+  "rank": "(52)",
   "gender": "M"
  },
  {
