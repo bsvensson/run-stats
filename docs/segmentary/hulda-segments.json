@@ -31478,6 +31478,33 @@
   ]
  },
  {
+  "segment": 8731798,
+  "name": "le bâtard mile",
+  "attempts": 17,
+  "peopleCount": 11,
+  "distance": 1,
+  "count_everyone": "11",
+  "athletes": [
+   "50180844",
+   "542999",
+   "16279149",
+   "1167695",
+   "23099564",
+   "5224990",
+   "1087729",
+   "46427678",
+   "9428734",
+   "8371082",
+   "7699916"
+  ],
+  "count_everyone_2022": "3",
+  "athletes_2022": [
+   "1167695",
+   "23099564",
+   "46427678"
+  ]
+ },
+ {
   "segment": 8562703,
   "name": "pinch me",
   "attempts": 16,
@@ -31526,29 +31553,6 @@
    "6260742",
    "23129566",
    "3487745"
-  ]
- },
- {
-  "segment": 8731798,
-  "name": "le bâtard mile",
-  "attempts": 15,
-  "peopleCount": 9,
-  "distance": 1,
-  "count_everyone": "9",
-  "athletes": [
-   "50180844",
-   "542999",
-   "16279149",
-   "5224990",
-   "1087729",
-   "46427678",
-   "9428734",
-   "8371082",
-   "7699916"
-  ],
-  "count_everyone_2022": "1",
-  "athletes_2022": [
-   "46427678"
   ]
  },
  {
@@ -31803,12 +31807,19 @@
  {
   "segment": 19763904,
   "name": "Denied Escape",
-  "attempts": 1,
-  "peopleCount": 1,
+  "attempts": 3,
+  "peopleCount": 3,
   "distance": 0.76,
-  "count_everyone": "1",
+  "count_everyone": "3",
   "athletes": [
-   "294207"
+   "294207",
+   "23099564",
+   "1167695"
+  ],
+  "count_everyone_2022": "2",
+  "athletes_2022": [
+   "23099564",
+   "1167695"
   ]
  }
 ]
