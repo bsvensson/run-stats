@@ -646,52 +646,60 @@
   "gender": "M"
  },
  {
+  "id": "523950",
+  "name": "Justin Snider",
+  "mentions": 51,
+  "mentions_2022": 1,
+  "rank": "(85)",
+  "gender": "M"
+ },
+ {
   "id": "16171350",
   "name": "Dan Hedges",
   "mentions": 50,
-  "rank": 87,
+  "rank": 88,
   "gender": "M"
  },
  {
   "id": "16448155",
   "name": "Ryan Thornton",
   "mentions": 50,
-  "rank": "(87)",
+  "rank": "(88)",
   "gender": "M"
  },
  {
   "id": "28188247",
   "name": "Noah Slocum",
   "mentions": 50,
-  "rank": "(87)",
+  "rank": "(88)",
   "gender": "M"
  },
  {
   "id": "28788810",
   "name": "Pablo Garrido",
   "mentions": 50,
-  "rank": "(87)",
+  "rank": "(88)",
   "gender": "M"
  },
  {
   "id": "16382279",
   "name": "Julia Guard",
   "mentions": 49,
-  "rank": 91,
+  "rank": 92,
   "gender": "F"
  },
  {
   "id": "17810514",
   "name": "Andrew J",
   "mentions": 49,
-  "rank": "(91)",
+  "rank": "(92)",
   "gender": "M"
  },
  {
   "id": "3406538",
   "name": "Andy Snipes",
   "mentions": 49,
-  "rank": "(91)",
+  "rank": "(92)",
   "gender": "M"
  },
  {
@@ -699,28 +707,28 @@
   "name": "Steve Lee",
   "mentions": 49,
   "mentions_2022": 1,
-  "rank": "(91)",
+  "rank": "(92)",
   "gender": "M"
  },
  {
   "id": "5103474",
   "name": "Brittany Beckwith",
   "mentions": 49,
-  "rank": "(91)",
+  "rank": "(92)",
   "gender": "F"
  },
  {
   "id": "1221942",
   "name": "Willem Pennings",
   "mentions": 48,
-  "rank": 96,
+  "rank": 97,
   "gender": "M"
  },
  {
   "id": "13534627",
   "name": "Tom Shank",
   "mentions": 48,
-  "rank": "(96)",
+  "rank": "(97)",
   "gender": "M"
  },
  {
@@ -728,28 +736,28 @@
   "name": "Jon Cotter",
   "mentions": 48,
   "mentions_2022": 1,
-  "rank": "(96)",
+  "rank": "(97)",
   "gender": "M"
  },
  {
   "id": "19276009",
   "name": "Marjean Pobuda",
   "mentions": 48,
-  "rank": "(96)",
+  "rank": "(97)",
   "gender": "M"
  },
  {
   "id": "3601213",
   "name": "Jon Meikle",
   "mentions": 48,
-  "rank": "(96)",
+  "rank": "(97)",
   "gender": "M"
  },
  {
   "id": "47451193",
   "name": "John Cole",
   "mentions": 48,
-  "rank": "(96)",
+  "rank": "(97)",
   "gender": "M"
  },
  {
@@ -757,14 +765,14 @@
   "name": "Brent Ellsworth",
   "mentions": 48,
   "mentions_2022": 1,
-  "rank": "(96)",
+  "rank": "(97)",
   "gender": "M"
  },
  {
   "id": "17396265",
   "name": "A N N A",
   "mentions": 47,
-  "rank": 103,
+  "rank": 104,
   "gender": "F"
  },
  {
@@ -772,7 +780,7 @@
   "name": "Abel Romero Monstrow Goon",
   "mentions": 47,
   "mentions_2022": 1,
-  "rank": "(103)",
+  "rank": "(104)",
   "gender": "M"
  },
  {
@@ -780,15 +788,7 @@
   "name": "Brendan Collins",
   "mentions": 47,
   "mentions_2022": 1,
-  "rank": "(103)",
-  "gender": "M"
- },
- {
-  "id": "523950",
-  "name": "Justin Snider",
-  "mentions": 47,
-  "mentions_2022": 1,
-  "rank": "(103)",
+  "rank": "(104)",
   "gender": "M"
  },
  {
