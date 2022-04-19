@@ -8811,7 +8811,7 @@
  {
   "segment": 3352527,
   "name": "Richardson Canyon Climb",
-  "attempts": 1916,
+  "attempts": 1918,
   "peopleCount": 148,
   "distance": 0.72,
   "count_everyone": "148",
@@ -12140,7 +12140,7 @@
  {
   "segment": 3505106,
   "name": "Sprint or Walk",
-  "attempts": 1538,
+  "attempts": 1542,
   "peopleCount": 198,
   "distance": 0.12,
   "count_everyone": "198",
@@ -12344,7 +12344,7 @@
    "28788810",
    "24482059"
   ],
-  "count_everyone_2022": "28",
+  "count_everyone_2022": "29",
   "athletes_2022": [
    "50180844",
    "257922",
@@ -12354,6 +12354,7 @@
    "2022219",
    "523950",
    "1814138",
+   "12937566",
    "1167695",
    "48163010",
    "15365581",
@@ -16315,7 +16316,7 @@
  {
   "segment": 7948148,
   "name": "Shhhhh... Es Crespo",
-  "attempts": 1171,
+  "attempts": 1173,
   "peopleCount": 222,
   "distance": 0.97,
   "count_everyone": "222",
@@ -16543,8 +16544,9 @@
    "4254536",
    "50068197"
   ],
-  "count_everyone_2022": "15",
+  "count_everyone_2022": "16",
   "athletes_2022": [
+   "50180844",
    "12937566",
    "24604851",
    "294207",
