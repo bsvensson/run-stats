@@ -478,7 +478,7 @@
  {
   "id": "632356",
   "name": "Luis  Perez",
-  "mentions": 71,
+  "mentions": 72,
   "mentions_2022": 1,
   "rank": 64,
   "gender": "M"
@@ -13155,6 +13155,14 @@
   "id": "27220996",
   "name": "Emily Davis",
   "mentions": 1,
+  "rank": "(1795)",
+  "gender": "F"
+ },
+ {
+  "id": "2751317",
+  "name": "Rosemary Poblacion",
+  "mentions": 1,
+  "mentions_2022": 1,
   "rank": "(1795)",
   "gender": "F"
  },
