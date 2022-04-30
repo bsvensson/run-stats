@@ -94,11 +94,19 @@
   "gender": "F"
  },
  {
+  "id": "2022219",
+  "name": "Rory Macomber",
+  "mentions": 137,
+  "mentions_2022": 1,
+  "rank": 13,
+  "gender": "M"
+ },
+ {
   "id": "16279149",
   "name": "Keith VanGraafeiland",
   "mentions": 136,
   "mentions_2022": 1,
-  "rank": 13,
+  "rank": 14,
   "gender": "M"
  },
  {
@@ -106,28 +114,28 @@
   "name": "Mike Gunther",
   "mentions": 136,
   "mentions_2022": 1,
-  "rank": "(13)",
+  "rank": "(14)",
   "gender": "M"
  },
  {
   "id": "52590",
   "name": "Arlin Blood",
   "mentions": 136,
-  "rank": "(13)",
+  "rank": "(14)",
   "gender": "M"
  },
  {
   "id": "7790048",
   "name": "Chris J",
   "mentions": 136,
-  "rank": "(13)",
+  "rank": "(14)",
   "gender": "M"
  },
  {
   "id": "1912063",
   "name": "April McElfish",
   "mentions": 134,
-  "rank": 17,
+  "rank": 18,
   "gender": "F"
  },
  {
@@ -135,7 +143,7 @@
   "name": "Jonathan Endres",
   "mentions": 134,
   "mentions_2022": 1,
-  "rank": "(17)",
+  "rank": "(18)",
   "gender": "M"
  },
  {
@@ -143,15 +151,7 @@
   "name": "Joe M.",
   "mentions": 134,
   "mentions_2022": 1,
-  "rank": "(17)",
-  "gender": "M"
- },
- {
-  "id": "2022219",
-  "name": "Rory Macomber",
-  "mentions": 133,
-  "mentions_2022": 1,
-  "rank": 20,
+  "rank": "(18)",
   "gender": "M"
  },
  {
@@ -159,7 +159,7 @@
   "name": "Alan DeWeerd",
   "mentions": 133,
   "mentions_2022": 1,
-  "rank": "(20)",
+  "rank": 21,
   "gender": "M"
  },
  {
