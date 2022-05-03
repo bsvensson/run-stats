@@ -308,10 +308,18 @@
   "gender": "M"
  },
  {
+  "id": "1612094",
+  "name": "Brian Belleau",
+  "mentions": 93,
+  "mentions_2022": 1,
+  "rank": 41,
+  "gender": "M"
+ },
+ {
   "id": "1849336",
   "name": "Justin Van Allen",
   "mentions": 93,
-  "rank": 41,
+  "rank": "(41)",
   "gender": "M"
  },
  {
@@ -326,16 +334,8 @@
   "id": "12572065",
   "name": "Cassie Krause",
   "mentions": 92,
-  "rank": 43,
+  "rank": 44,
   "gender": "F"
- },
- {
-  "id": "1612094",
-  "name": "Brian Belleau",
-  "mentions": 92,
-  "mentions_2022": 1,
-  "rank": "(43)",
-  "gender": "M"
  },
  {
   "id": "21244489",
@@ -4101,6 +4101,7 @@
   "id": "712205",
   "name": "Waylon Biggs",
   "mentions": 12,
+  "mentions_2022": 1,
   "rank": "(535)",
   "gender": "M"
  },
