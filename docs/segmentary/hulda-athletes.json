@@ -255,7 +255,7 @@
  {
   "id": "23919665",
   "name": "Arthur mclarty",
-  "mentions": 102,
+  "mentions": 103,
   "mentions_2022": 1,
   "rank": 34,
   "gender": "M"
@@ -265,7 +265,7 @@
   "name": "Alex Nelson",
   "mentions": 102,
   "mentions_2022": 1,
-  "rank": "(34)",
+  "rank": 35,
   "gender": "M"
  },
  {
@@ -800,24 +800,32 @@
   "gender": "M"
  },
  {
+  "id": "47350562",
+  "name": "Ethan Brown",
+  "mentions": 47,
+  "mentions_2022": 1,
+  "rank": "(105)",
+  "gender": "M"
+ },
+ {
   "id": "12112300",
   "name": "Isaiah Roggow 🌱",
   "mentions": 46,
-  "rank": 108,
+  "rank": 109,
   "gender": "M"
  },
  {
   "id": "12500387",
   "name": "Anthony Rodriguez",
   "mentions": 46,
-  "rank": "(108)",
+  "rank": "(109)",
   "gender": "M"
  },
  {
   "id": "1437297",
   "name": "Nick Buchholz",
   "mentions": 46,
-  "rank": "(108)",
+  "rank": "(109)",
   "gender": "M"
  },
  {
@@ -825,7 +833,7 @@
   "name": "Micki Vickroy",
   "mentions": 46,
   "mentions_2022": 1,
-  "rank": "(108)",
+  "rank": "(109)",
   "gender": "F"
  },
  {
@@ -833,15 +841,7 @@
   "name": "Robert Price",
   "mentions": 46,
   "mentions_2022": 1,
-  "rank": "(108)",
-  "gender": "M"
- },
- {
-  "id": "47350562",
-  "name": "Ethan Brown",
-  "mentions": 46,
-  "mentions_2022": 1,
-  "rank": "(108)",
+  "rank": "(109)",
   "gender": "M"
  },
  {
@@ -1594,7 +1594,7 @@
  },
  {
   "id": "21164520",
-  "name": "WhoisWill Hockett",
+  "name": "Will Hockett",
   "mentions": 29,
   "mentions_2022": 1,
   "rank": "(215)",
