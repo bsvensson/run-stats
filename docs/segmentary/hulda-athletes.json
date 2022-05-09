@@ -1319,6 +1319,14 @@
   "gender": "F"
  },
  {
+  "id": "49799424",
+  "name": "Rina K",
+  "mentions": 34,
+  "mentions_2022": 1,
+  "rank": "(175)",
+  "gender": "F"
+ },
+ {
   "id": "5374944",
   "name": "Daniel Cuevas",
   "mentions": 34,
@@ -1344,14 +1352,14 @@
   "id": "12914519",
   "name": "Madison Markey",
   "mentions": 33,
-  "rank": 183,
+  "rank": 184,
   "gender": "F"
  },
  {
   "id": "23106722",
   "name": "Xed Oms",
   "mentions": 33,
-  "rank": "(183)",
+  "rank": "(184)",
   "gender": "M"
  },
  {
@@ -1359,7 +1367,7 @@
   "name": "Nathanael Heyman",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(183)",
+  "rank": "(184)",
   "gender": "M"
  },
  {
@@ -1367,22 +1375,14 @@
   "name": "@ _.jmromero._",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(183)",
+  "rank": "(184)",
   "gender": "M"
- },
- {
-  "id": "49799424",
-  "name": "Rina K",
-  "mentions": 33,
-  "mentions_2022": 1,
-  "rank": "(183)",
-  "gender": "F"
  },
  {
   "id": "721626",
   "name": "travis Underwood",
   "mentions": 33,
-  "rank": "(183)",
+  "rank": "(184)",
   "gender": "M"
  },
  {
