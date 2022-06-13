@@ -1763,6 +1763,14 @@
   "gender": "M"
  },
  {
+  "id": "43908554",
+  "name": "Thomas Guarneri",
+  "mentions": 27,
+  "mentions_2022": 1,
+  "rank": "(236)",
+  "gender": "M"
+ },
+ {
   "id": "62309858",
   "name": "Amanda Woodruff",
   "mentions": 27,
@@ -1788,71 +1796,63 @@
   "id": "11896752",
   "name": "TheWolfman Zack",
   "mentions": 26,
-  "rank": 244,
+  "rank": 245,
   "gender": "M"
  },
  {
   "id": "1287087",
   "name": "Long Nguyen (Vietnamese Mtb)",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "M"
  },
  {
   "id": "1779160",
   "name": "Dylan Pomerantz",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "M"
  },
  {
   "id": "200244",
   "name": "Paul Robinson - Don&#39;s Bikes",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "M"
  },
  {
   "id": "247916",
   "name": "Mark Hiday",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "M"
  },
  {
   "id": "3262731",
   "name": "j g",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "F"
  },
  {
   "id": "3632422",
   "name": "Liz T.",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "F"
- },
- {
-  "id": "43908554",
-  "name": "Thomas Guarneri",
-  "mentions": 26,
-  "mentions_2022": 1,
-  "rank": "(244)",
-  "gender": "M"
  },
  {
   "id": "4700632",
   "name": "Joshua Thompson",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "M"
  },
  {
   "id": "57982",
   "name": "Eric Shadle",
   "mentions": 26,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "M"
  },
  {
@@ -1860,7 +1860,7 @@
   "name": "Tom Whittemore",
   "mentions": 26,
   "mentions_2022": 1,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "M"
  },
  {
@@ -1868,7 +1868,7 @@
   "name": "Yecenia Luviano",
   "mentions": 26,
   "mentions_2022": 1,
-  "rank": "(244)",
+  "rank": "(245)",
   "gender": "F"
  },
  {
