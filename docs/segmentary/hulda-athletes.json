@@ -1328,6 +1328,14 @@
   "gender": "F"
  },
  {
+  "id": "23368140",
+  "name": "Solo Runner",
+  "mentions": 34,
+  "mentions_2022": 1,
+  "rank": "(176)",
+  "gender": "M"
+ },
+ {
   "id": "49799424",
   "name": "Rina K",
   "mentions": 34,
@@ -1361,22 +1369,14 @@
   "id": "12914519",
   "name": "Madison Markey",
   "mentions": 33,
-  "rank": 185,
+  "rank": 186,
   "gender": "F"
  },
  {
   "id": "23106722",
   "name": "Xed Oms",
   "mentions": 33,
-  "rank": "(185)",
-  "gender": "M"
- },
- {
-  "id": "23368140",
-  "name": "Solo Runner",
-  "mentions": 33,
-  "mentions_2022": 1,
-  "rank": "(185)",
+  "rank": "(186)",
   "gender": "M"
  },
  {
@@ -1384,7 +1384,7 @@
   "name": "Nathanael Heyman",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(185)",
+  "rank": "(186)",
   "gender": "M"
  },
  {
@@ -1392,14 +1392,14 @@
   "name": "@ _.jmromero._",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(185)",
+  "rank": "(186)",
   "gender": "M"
  },
  {
   "id": "721626",
   "name": "travis Underwood",
   "mentions": 33,
-  "rank": "(185)",
+  "rank": "(186)",
   "gender": "M"
  },
  {
