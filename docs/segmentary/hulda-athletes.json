@@ -1892,6 +1892,14 @@
   "gender": "M"
  },
  {
+  "id": "43440769",
+  "name": "Aote XIN",
+  "mentions": 26,
+  "mentions_2022": 1,
+  "rank": "(250)",
+  "gender": "M"
+ },
+ {
   "id": "4700632",
   "name": "Joshua Thompson",
   "mentions": 26,
@@ -1933,14 +1941,14 @@
   "id": "1028078",
   "name": "Nick Benson",
   "mentions": 25,
-  "rank": 262,
+  "rank": 263,
   "gender": "M"
  },
  {
   "id": "25739497",
   "name": "Louis Enciso",
   "mentions": 25,
-  "rank": "(262)",
+  "rank": "(263)",
   "gender": "M"
  },
  {
@@ -1948,14 +1956,14 @@
   "name": "Damien Cannon",
   "mentions": 25,
   "mentions_2022": 1,
-  "rank": "(262)",
+  "rank": "(263)",
   "gender": "M"
  },
  {
   "id": "26739460",
   "name": "Lucas Baxter",
   "mentions": 25,
-  "rank": "(262)",
+  "rank": "(263)",
   "gender": "M"
  },
  {
@@ -1963,15 +1971,7 @@
   "name": "Jared Napod",
   "mentions": 25,
   "mentions_2022": 1,
-  "rank": "(262)",
-  "gender": "M"
- },
- {
-  "id": "43440769",
-  "name": "Aote XIN",
-  "mentions": 25,
-  "mentions_2022": 1,
-  "rank": "(262)",
+  "rank": "(263)",
   "gender": "M"
  },
  {
@@ -1979,14 +1979,14 @@
   "name": "Mindy Ruotolo",
   "mentions": 25,
   "mentions_2022": 1,
-  "rank": "(262)",
+  "rank": "(263)",
   "gender": "F"
  },
  {
   "id": "59585790",
   "name": "Matthew Stanley",
   "mentions": 25,
-  "rank": "(262)",
+  "rank": "(263)",
   "gender": "M"
  },
  {
