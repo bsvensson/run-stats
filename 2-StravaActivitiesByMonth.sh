@@ -30,6 +30,8 @@ gograb() {
   # uppercase first letter in name
   NAME="$(tr '[:lower:]' '[:upper:]' <<< ${NAME:0:1})${NAME:1}"
 
+  # JoeM/Joe
+  NICENAME=$NAME
   case $NAME in
     Bjorn) ID=1167695;;
     Kylie) ID=6260742;;
@@ -37,24 +39,28 @@ gograb() {
     Zara)  ID=23099564;;
     Erwin) ID=16638771;;
     Chris) ID=294207;;
-    Joe)   ID=48542642;;
+    JoeM)  ID=48542642
+           NICENAME=Joe;;
     Alan)  ID=37213693;;
+    JoeH)  ID=69482669
+           NICENAME=Joe;;
     *)
       echo ERROR: Unexpected NAME - $NAME
       exit 1;;
   esac
-  echo ==== $NAME, $YEAR, $MONTH, $ID ====
+
+  echo ==== $NAME/$NICENAME, $YEAR, $MONTH, $ID ====
   JSONFILE=$DATADIR/$NAME-$YEAR-$MONTH.json
   curl "$URL1/$ID/interval?interval=$YEAR$MONTH&interval_type=month&chart_type=miles&year_offset=0" -H "x-requested-with: XMLHttpRequest" -H "sec-fetch-site: same-origin" -H "sec-fetch-mode: cors" -H "sec-fetch-dest: empty" -H "cookie: _strava4_session=$_strava4_session" -S -# --output $JSONFILE
-  sed -e 's/\\n/\n/g' $JSONFILE | grep a.href=../activities/ | sed -e 's|^.a href=../activities/||' -e 's|\\.*||' | sort > $DATADIR/$NAME-$YEAR-$MONTH.csv
+  sed -e "s|u0026url=https%3A%2F%2Fwww.strava.com%2Factivities%2F|\n|g" $JSONFILE | grep utm_content%3D$ID%26 | grep "^[1-9][0-9]" | sed -e "s|^|https://www.strava.com/activities/|" -e "s/%3Futm_content.*//" | sort | uniq > $DATADIR/$NAME-$YEAR-$MONTH.csv
   sort --unique $DATADIR/$NAME-$YEAR-*.csv > $DATADIR/$NAME-$YEAR.csv
   sort --unique $DATADIR/$NAME*.csv > $DATADIR/$NAME.csv
   paste -sd" " $DATADIR/$NAME-$YEAR-$MONTH.csv > $DATADIR/current-month-$NAME.txt
   rm $JSONFILE
 }
 
+ALLNAMES=( Bjorn Chris Erwin JoeH JoeM Kylie Sven Zara Alan )
 if test "$#" -eq 0; then
-  ALLNAMES=(Bjorn Chris Erwin Joe Kylie Sven Zara Alan)
   for n in ${ALLNAMES[@]}; do
     gograb $n
   done
@@ -62,7 +68,7 @@ elif test "$#" -eq 1; then
   gograb $1
 elif test "$#" -eq 2; then
   for n in ${ALLNAMES[@]}; do
-    gograb $n
+    gograb $n $1 $2
   done
 elif test "$#" -eq 3; then
   gograb $1 $2 $3
