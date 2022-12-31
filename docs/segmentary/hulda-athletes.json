@@ -1556,6 +1556,14 @@
   "gender": "M"
  },
  {
+  "id": "2268605",
+  "name": "Gage Hale",
+  "mentions": 36,
+  "mentions_2022": 1,
+  "rank": "(208)",
+  "gender": "M"
+ },
+ {
   "id": "27116965",
   "name": "Kirk Lewis",
   "mentions": 36,
@@ -1587,7 +1595,7 @@
   "id": "1878797",
   "name": "Liam Davidson",
   "mentions": 35,
-  "rank": 215,
+  "rank": 216,
   "gender": "M"
  },
  {
@@ -1595,15 +1603,7 @@
   "name": "WhoIsWill Hockett",
   "mentions": 35,
   "mentions_2022": 1,
-  "rank": "(215)",
-  "gender": "M"
- },
- {
-  "id": "2268605",
-  "name": "Gage Hale",
-  "mentions": 35,
-  "mentions_2022": 1,
-  "rank": "(215)",
+  "rank": "(216)",
   "gender": "M"
  },
  {
@@ -1611,14 +1611,14 @@
   "name": "Nathanael Heyman",
   "mentions": 35,
   "mentions_2022": 1,
-  "rank": "(215)",
+  "rank": "(216)",
   "gender": "M"
  },
  {
   "id": "2966364",
   "name": "Nathan Densmore",
   "mentions": 35,
-  "rank": "(215)",
+  "rank": "(216)",
   "gender": "M"
  },
  {
@@ -1626,14 +1626,14 @@
   "name": "Tina Welch",
   "mentions": 35,
   "mentions_2022": 1,
-  "rank": "(215)",
+  "rank": "(216)",
   "gender": "F"
  },
  {
   "id": "6222276",
   "name": "Karl Wallenkampf",
   "mentions": 35,
-  "rank": "(215)",
+  "rank": "(216)",
   "gender": "M"
  },
  {
@@ -1641,7 +1641,7 @@
   "name": "Weston Young",
   "mentions": 35,
   "mentions_2022": 1,
-  "rank": "(215)",
+  "rank": "(216)",
   "gender": "M"
  },
  {
