@@ -548,11 +548,19 @@
   "gender": "F"
  },
  {
+  "id": "41798231",
+  "name": "Brittany McPhee",
+  "mentions": 72,
+  "mentions_2022": 1,
+  "rank": "(72)",
+  "gender": "F"
+ },
+ {
   "id": "1404417",
   "name": "Andy Helm",
   "mentions": 70,
   "mentions_2022": 1,
-  "rank": 73,
+  "rank": 74,
   "gender": "M"
  },
  {
@@ -560,7 +568,7 @@
   "name": "Bailey  Krall",
   "mentions": 70,
   "mentions_2022": 1,
-  "rank": "(73)",
+  "rank": "(74)",
   "gender": "F"
  },
  {
@@ -568,16 +576,8 @@
   "name": "Robert Price",
   "mentions": 70,
   "mentions_2022": 1,
-  "rank": "(73)",
+  "rank": "(74)",
   "gender": "M"
- },
- {
-  "id": "41798231",
-  "name": "Brittany McPhee",
-  "mentions": 70,
-  "mentions_2022": 1,
-  "rank": "(73)",
-  "gender": "F"
  },
  {
   "id": "5224990",
@@ -608,18 +608,18 @@
   "gender": "M"
  },
  {
-  "id": "9558558",
-  "name": "Ivan L",
+  "id": "46427678",
+  "name": "Chris Arca",
   "mentions": 65,
+  "mentions_2022": 1,
   "rank": 81,
   "gender": "M"
  },
  {
-  "id": "46427678",
-  "name": "Chris Arca",
-  "mentions": 64,
-  "mentions_2022": 1,
-  "rank": 82,
+  "id": "9558558",
+  "name": "Ivan L",
+  "mentions": 65,
+  "rank": "(81)",
   "gender": "M"
  },
  {
@@ -950,41 +950,41 @@
   "gender": "M"
  },
  {
+  "id": "532313",
+  "name": "Jeremiah Kroeker",
+  "mentions": 51,
+  "mentions_2022": 1,
+  "rank": "(125)",
+  "gender": "M"
+ },
+ {
   "id": "10816658",
   "name": "Caleb Hill",
   "mentions": 50,
   "mentions_2022": 1,
-  "rank": 127,
+  "rank": 128,
   "gender": "M"
  },
  {
   "id": "12453283",
   "name": "Nina Bonina",
   "mentions": 50,
-  "rank": "(127)",
+  "rank": "(128)",
   "gender": "F"
  },
  {
   "id": "1720632",
   "name": "Troy Sykes",
   "mentions": 50,
-  "rank": "(127)",
+  "rank": "(128)",
   "gender": "M"
  },
  {
   "id": "3166419",
   "name": "Kristina Kyle",
   "mentions": 50,
-  "rank": "(127)",
+  "rank": "(128)",
   "gender": "F"
- },
- {
-  "id": "532313",
-  "name": "Jeremiah Kroeker",
-  "mentions": 50,
-  "mentions_2022": 1,
-  "rank": "(127)",
-  "gender": "M"
  },
  {
   "id": "1144332",
@@ -5893,6 +5893,13 @@
   "gender": "F"
  },
  {
+  "id": "565301",
+  "name": "Nolan Kinne",
+  "mentions": 11,
+  "rank": "(756)",
+  "gender": "M"
+ },
+ {
   "id": "58758861",
   "name": "Will Mathews",
   "mentions": 11,
@@ -6011,98 +6018,98 @@
   "id": "10678755",
   "name": "Jordan Kehoe",
   "mentions": 10,
-  "rank": 826,
+  "rank": 827,
   "gender": "M"
  },
  {
   "id": "1100776",
   "name": "Grace Carlson",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "11290051",
   "name": "Dmoneybigtime Dmoneybigtime",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "1158166",
   "name": "Sheryl Griebel",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "1174011",
   "name": "Trent Shumway",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "12357367",
   "name": "Virinder Rathour",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "12536823",
   "name": "Jocelyn Gonzales",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "1350407",
   "name": "Jump Around",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "14144154",
   "name": "Doug Stowers",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "14338873",
   "name": "Mike P",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "14398666",
   "name": "Douglas Trujillo",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "15643946",
   "name": "Richmond Custodio",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "17619864",
   "name": "Brody Blanchard",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "1795842",
   "name": "Greg Eiseman",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
@@ -6110,168 +6117,168 @@
   "name": "Don Sherrill",
   "mentions": 10,
   "mentions_2022": 1,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "1855745",
   "name": "Mark Birmingham",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "19265195",
   "name": "Carlos Hernandez",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "19364493",
   "name": "Beto Hernandez",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "19469200",
   "name": "Benjamin Slagter",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "2004587",
   "name": "Matt Smith",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "20277537",
   "name": "Christie E",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "20416837",
   "name": "Sun Screen",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "22164972",
   "name": "meg ermer",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "2450466",
   "name": "Chad Kendall",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "24582129",
   "name": "helena harrity",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "25778385",
   "name": "Erik Shipley",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "27170902",
   "name": "Matt Krepsik",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "28215",
   "name": "Brian Stinnett",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "288377",
   "name": "Stefan Griebel",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "30074427",
   "name": "Christopher Montgomery",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "31560452",
   "name": "Karsten Rentner",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "31746033",
   "name": "Danica DeVoe",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "32039631",
   "name": "Rachel Gee",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "33959472",
   "name": "Clara Miller",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "34128558",
   "name": "Joseph Gastelum",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "3517546",
   "name": "Zach Golay",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "354606",
   "name": "Gabriel Perez",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "35991218",
   "name": "Carlos Hernandez",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
@@ -6279,14 +6286,14 @@
   "name": "Libby H",
   "mentions": 10,
   "mentions_2022": 1,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "4280909",
   "name": "L Dub",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
@@ -6294,28 +6301,28 @@
   "name": "Mike Hawkins",
   "mentions": 10,
   "mentions_2022": 1,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "45205138",
   "name": "Eduardo Lara",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "47963042",
   "name": "Domenick Lero",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "48655320",
   "name": "Devin Cordova",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
@@ -6323,49 +6330,42 @@
   "name": "elizabeth rodriguez",
   "mentions": 10,
   "mentions_2022": 1,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "5180030",
   "name": "Colin Nye",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "52631836",
   "name": "Juan Hernandez",
   "mentions": 10,
-  "rank": "(826)",
-  "gender": "M"
- },
- {
-  "id": "565301",
-  "name": "Nolan Kinne",
-  "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "57512595",
   "name": "Steve Haro",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "57791168",
   "name": "Rachel Szonyi",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "62063200",
   "name": "Oscar Gaspar",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
@@ -6373,63 +6373,63 @@
   "name": "Salvador Olivares",
   "mentions": 10,
   "mentions_2022": 1,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "63285839",
   "name": "Jesus Hernandez",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "6703308",
   "name": "Brent Keate",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "7011038",
   "name": "Scott Nelson",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
   "id": "709223",
   "name": "Leba Cohen",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "8208750",
   "name": "Sabrina Brown",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "8978013",
   "name": "Jess Klain",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "8978984",
   "name": "Gloria Venegas",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "F"
  },
  {
   "id": "90097",
   "name": "Jason Friedrich",
   "mentions": 10,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
@@ -6437,7 +6437,7 @@
   "name": "Elden Sondakh",
   "mentions": 10,
   "mentions_2022": 1,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
@@ -6445,7 +6445,7 @@
   "name": "Zack Hoffer",
   "mentions": 10,
   "mentions_2022": 1,
-  "rank": "(826)",
+  "rank": "(827)",
   "gender": "M"
  },
  {
@@ -15450,6 +15450,7 @@
   "id": "45274134",
   "name": "Jonathan Emerson",
   "mentions": 1,
+  "mentions_2022": 1,
   "rank": "(1986)",
   "gender": "M"
  },
@@ -16061,6 +16062,7 @@
   "id": "74675342",
   "name": "Dylan Simpson",
   "mentions": 1,
+  "mentions_2022": 1,
   "rank": "(1986)",
   "gender": "M"
  },
