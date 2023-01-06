@@ -1690,6 +1690,14 @@
   "gender": "M"
  },
  {
+  "id": "37465061",
+  "name": "Mike Acosta",
+  "mentions": 34,
+  "mentions_2022": 1,
+  "rank": "(225)",
+  "gender": "M"
+ },
+ {
   "id": "39136636",
   "name": "Ruben Benavente",
   "mentions": 34,
@@ -1717,7 +1725,7 @@
   "name": "Long Nguyen (Vietnamese Mtb)",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": 232,
+  "rank": 233,
   "gender": "M"
  },
  {
@@ -1725,14 +1733,14 @@
   "name": "Mike Rhynus",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(232)",
+  "rank": "(233)",
   "gender": "M"
  },
  {
   "id": "17920568",
   "name": "Mario Granadeno",
   "mentions": 33,
-  "rank": "(232)",
+  "rank": "(233)",
   "gender": "M"
  },
  {
@@ -1740,7 +1748,7 @@
   "name": "Damien Cannon",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(232)",
+  "rank": "(233)",
   "gender": "M"
  },
  {
@@ -1748,21 +1756,21 @@
   "name": "Tate Cowley",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(232)",
+  "rank": "(233)",
   "gender": "M"
  },
  {
   "id": "4700632",
   "name": "Joshua Thompson",
   "mentions": 33,
-  "rank": "(232)",
+  "rank": "(233)",
   "gender": "M"
  },
  {
   "id": "51067811",
   "name": "Pastor Carlos Acosta",
   "mentions": 33,
-  "rank": "(232)",
+  "rank": "(233)",
   "gender": "M"
  },
  {
@@ -1770,78 +1778,70 @@
   "name": "Brenda Weiss",
   "mentions": 33,
   "mentions_2022": 1,
-  "rank": "(232)",
+  "rank": "(233)",
   "gender": "F"
  },
  {
   "id": "1028078",
   "name": "Nick Benson",
   "mentions": 32,
-  "rank": 240,
+  "rank": 241,
   "gender": "M"
  },
  {
   "id": "11896752",
   "name": "TheWolfman Zack",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
   "id": "1542691",
   "name": "Vaughn Nelson",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
   "id": "19094356",
   "name": "David Salas, PT, DPT, CSCS",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
   "id": "3262731",
   "name": "j g",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "F"
  },
  {
   "id": "35687894",
   "name": "Robert Polski",
   "mentions": 32,
-  "rank": "(240)",
-  "gender": "M"
- },
- {
-  "id": "37465061",
-  "name": "Mike Acosta",
-  "mentions": 32,
-  "mentions_2022": 1,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
   "id": "4573977",
   "name": "Genesis Napod",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
   "id": "63301433",
   "name": "Rylee Sutton",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "F"
  },
  {
   "id": "8371082",
   "name": "James Harrop",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
@@ -1849,14 +1849,14 @@
   "name": "Default .",
   "mentions": 32,
   "mentions_2022": 1,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
   "id": "9917118",
   "name": "Roland Hansson",
   "mentions": 32,
-  "rank": "(240)",
+  "rank": "(241)",
   "gender": "M"
  },
  {
